@@ -147,8 +147,8 @@ Feature: E-Commerce website healthcheck
     Then Subscribe now message is displayed
 
     Examples: 
-      | emailid             | mobileno   |
-      | saydgfgd1@yahoo.com | 9033687878 |
+      | emailid            | mobileno   |
+      | qwewqfd1@yahoo.com | 9056523346 |
 
   @FooterLinksLists
   Scenario: Validate all footer links on landing page of the application
@@ -197,3 +197,10 @@ Feature: E-Commerce website healthcheck
     When User click on twitter link
     And navigate to twitter account page
     Then User opened with twitter url "https://twitter.com/i/flow/login"
+    
+    
+     @FacebookHandle
+  Scenario: Validate facebook social media handle
+    When User click on facebook link
+    And navigate to facebook account page
+    Then User opened with facebook url "https://www.facebook.com/canderejewellery"

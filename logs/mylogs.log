@@ -1,55 +1,14 @@
-2023-Jul-07 15:28:51 pm [main] INFO  core.WebDriverFactory - Chrome browser invoked
-2023-Jul-07 15:28:52 pm [main] INFO  core.WebDriverFactory - browser window maximized and set timeout is 20 second
-2023-Jul-07 15:28:59 pm [main] INFO  core.WebDriverFactory - navigate to url
-2023-Jul-07 15:28:59 pm [main] INFO  StepDefination.HomeStepDef - User is on landing page after navigating to base URL
-2023-Jul-07 15:28:59 pm [main] INFO  PageObjects.HomePageObjects - validate current URL of page ,so URL is: https://www.candere.com/
-2023-Jul-07 15:29:00 pm [main] INFO  core.WebDriverFactory - Quit the browser
-2023-Jul-07 15:29:01 pm [main] INFO  core.WebDriverFactory - Chrome browser invoked
-2023-Jul-07 15:29:01 pm [main] INFO  core.WebDriverFactory - browser window maximized and set timeout is 20 second
-2023-Jul-07 15:29:07 pm [main] INFO  core.WebDriverFactory - navigate to url
-2023-Jul-07 15:29:07 pm [main] INFO  StepDefination.HomeStepDef - User is on landing page after navigating to base URL
-2023-Jul-07 15:29:07 pm [main] INFO  PageObjects.HomePageObjects - Validate title of page, title is:Online Jewellery Shopping India | Candere By Kalyan Jewellers | Most Trusted Online Jewellery Store
-2023-Jul-07 15:29:07 pm [main] INFO  core.WebDriverFactory - Quit the browser
-2023-Jul-07 15:29:08 pm [main] INFO  core.WebDriverFactory - Chrome browser invoked
-2023-Jul-07 15:29:09 pm [main] INFO  core.WebDriverFactory - browser window maximized and set timeout is 20 second
-2023-Jul-07 15:29:14 pm [main] INFO  core.WebDriverFactory - navigate to url
-2023-Jul-07 15:29:14 pm [main] INFO  PageObjects.SignUpPageObject - Validate the signIn Button
-2023-Jul-07 15:29:18 pm [main] INFO  PageObjects.SignUpPageObject - Click on the signIn Button
-2023-Jul-07 15:29:18 pm [main] INFO  PageObjects.SignUpPageObject - Validate title of signIn page, so title is: Online Jewellery Shopping India | Candere By Kalyan Jewellers | Most Trusted Online Jewellery Store
-2023-Jul-07 15:29:18 pm [main] INFO  core.WebDriverFactory - Quit the browser
-2023-Jul-07 15:29:19 pm [main] INFO  core.WebDriverFactory - Chrome browser invoked
-2023-Jul-07 15:29:19 pm [main] INFO  core.WebDriverFactory - browser window maximized and set timeout is 20 second
-2023-Jul-07 15:29:24 pm [main] INFO  core.WebDriverFactory - navigate to url
-2023-Jul-07 15:29:25 pm [main] INFO  PageObjects.SignUpPageObject - Click on the signIn Button
-2023-Jul-07 15:29:25 pm [main] INFO  PageObjects.SignUpPageObject - Click on the signUp Button
-2023-Jul-07 15:29:25 pm [main] INFO  PageObjects.SignUpPageObject - Validate title of signIn page, so title is: Online Jewellery Shopping India | Candere By Kalyan Jewellers | Most Trusted Online Jewellery Store
-2023-Jul-07 15:29:34 pm [main] INFO  PageObjects.SignUpPageObject - Validate title of signIn page, so title is: Online Jewellery Shopping India | Candere By Kalyan Jewellers | Most Trusted Online Jewellery Store
-2023-Jul-07 15:29:36 pm [main] INFO  core.WebDriverFactory - Quit the browser
-2023-Jul-07 15:29:37 pm [main] INFO  core.WebDriverFactory - Chrome browser invoked
-2023-Jul-07 15:29:37 pm [main] INFO  core.WebDriverFactory - browser window maximized and set timeout is 20 second
-2023-Jul-07 15:29:42 pm [main] INFO  core.WebDriverFactory - navigate to url
-2023-Jul-07 15:29:43 pm [main] INFO  PageObjects.SignUpPageObject - Click on the signIn Button
-2023-Jul-07 15:29:44 pm [main] INFO  PageObjects.SignUpPageObject - Click on the signUp Button
-2023-Jul-07 15:29:44 pm [main] INFO  PageObjects.SignUpPageObject - Validate title of signIn page, so title is: Online Jewellery Shopping India | Candere By Kalyan Jewellers | Most Trusted Online Jewellery Store
-2023-Jul-07 15:29:53 pm [main] INFO  PageObjects.SignUpPageObject - Validate title of signIn page, so title is: Online Jewellery Shopping India | Candere By Kalyan Jewellers | Most Trusted Online Jewellery Store
-2023-Jul-07 15:29:54 pm [main] INFO  core.WebDriverFactory - Quit the browser
-2023-Jul-07 15:29:55 pm [main] INFO  core.WebDriverFactory - Chrome browser invoked
-2023-Jul-07 15:29:55 pm [main] INFO  core.WebDriverFactory - browser window maximized and set timeout is 20 second
-2023-Jul-07 15:30:01 pm [main] INFO  core.WebDriverFactory - navigate to url
-2023-Jul-07 15:30:02 pm [main] INFO  PageObjects.SignUpPageObject - Click on the signIn Button
-2023-Jul-07 15:30:02 pm [main] INFO  PageObjects.SignUpPageObject - Click on the logIn Button
-2023-Jul-07 15:30:26 pm [main] INFO  PageObjects.SignUpPageObject - Validate title of signIn page, so title is: Online Jewellery Shopping India | Candere By Kalyan Jewellers | Most Trusted Online Jewellery Store
-2023-Jul-07 15:30:27 pm [main] INFO  core.WebDriverFactory - Quit the browser
-2023-Jul-07 15:30:29 pm [main] INFO  core.WebDriverFactory - Chrome browser invoked
-2023-Jul-07 15:30:29 pm [main] INFO  core.WebDriverFactory - browser window maximized and set timeout is 20 second
-2023-Jul-07 15:30:36 pm [main] INFO  core.WebDriverFactory - navigate to url
-2023-Jul-07 15:30:38 pm [main] INFO  core.WebDriverFactory - Quit the browser
-2023-Jul-07 15:30:39 pm [main] INFO  core.WebDriverFactory - Chrome browser invoked
-2023-Jul-07 15:30:40 pm [main] INFO  core.WebDriverFactory - browser window maximized and set timeout is 20 second
-2023-Jul-07 15:30:45 pm [main] INFO  core.WebDriverFactory - navigate to url
-2023-Jul-07 15:30:45 pm [main] INFO  PageObjects.HomePageObjects - Browser invoked with URL as -> https://www.candere.com/  
-2023-Jul-07 15:30:45 pm [main] INFO  PageObjects.HomePageObjects - Base URL -> https://www.candere.com/   title validation is successful
-2023-Jul-07 15:30:46 pm [main] INFO  PageObjects.HomePageObjects - Sent the keys to search box as -> ring
-2023-Jul-07 15:30:51 pm [main] INFO  PageObjects.HomePageObjects - Clicked on search button
-2023-Jul-07 15:30:51 pm [main] INFO  PageObjects.HomePageObjects - Page title validation for Product name in title ->Gold & Diamond Ring Designs for Men & Women - Candere by Kalyan Jewellers is successful
-2023-Jul-07 15:30:51 pm [main] INFO  core.WebDriverFactory - Quit the browser
+2023-Jul-31 17:29:26 pm [main] INFO  core.WebDriverFactory - Chrome browser invoked
+2023-Jul-31 17:29:26 pm [main] INFO  core.WebDriverFactory - browser window maximized and set timeout is 20 second
+2023-Jul-31 17:29:31 pm [main] INFO  core.WebDriverFactory - navigate to url
+2023-Jul-31 17:29:33 pm [main] INFO  PageObjects.SignUpPageObject - Click on the User Icon
+2023-Jul-31 17:29:33 pm [main] INFO  PageObjects.SignUpPageObject - Click on the logIn Button
+2023-Jul-31 17:29:49 pm [main] INFO  PageObjects.ProdductDescPageObjects - Product description page is display
+2023-Jul-31 17:29:52 pm [main] INFO  PageObjects.ProdductDescPageObjects - Add to cart button is displayed
+2023-Jul-31 17:30:08 pm [main] INFO  StepDefination.HomeStepDef - Checkout Securely button is displayed
+2023-Jul-31 17:30:09 pm [main] INFO  PageObjects.PaymentPageObjects - Clicked on Continue Button
+2023-Jul-31 17:30:13 pm [main] INFO  PageObjects.PaymentPageObjects - Scroll Up
+2023-Jul-31 17:30:19 pm [main] INFO  PageObjects.PaymentPageObjects - Click on Bill to This Address Checkbox
+2023-Jul-31 17:30:23 pm [main] INFO  PageObjects.PaymentPageObjects - Click on Continue button
+2023-Jul-31 17:30:25 pm [main] INFO  PageObjects.PaymentPageObjects - Credit / Debit Card Payment Option is displayed
+2023-Jul-31 17:31:10 pm [main] INFO  core.WebDriverFactory - Quit the browser

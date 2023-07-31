@@ -13,14 +13,19 @@ import io.cucumber.junit.CucumberOptions;
 	@CucumberOptions(
 			
 			
-			features={"src/test/resources/Feature/Login.feature"},           //Path of Feature folder which hold feature file
+			features={"src/test/resources/Feature/PaymentPage.feature"},           //Path of Feature folder which hold feature file
 	        glue={"StepDefination","HomeStepDef" }, // Path of StepDefinition file
-	        tags= " @healthCheck", 
+	        tags= "   @ChangeAddress", 
 	        plugin = {"pretty",                      
 	            "html:target/html/htmlReport.html",
 	            "json:target/json/jsonReport.json",
+	            
 	            "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
 				"timeline:test-output-thread/"
+	            
+	            
+	            
+	            
 	            
 			},
 			

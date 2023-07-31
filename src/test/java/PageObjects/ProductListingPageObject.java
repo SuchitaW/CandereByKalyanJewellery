@@ -58,7 +58,13 @@ public class ProductListingPageObject {
 			{
 				Assert.fail();
 			}
-		}}
+		}
+		
+		logger.info("Validate the product sub category with expected datatable");
+		scn.log("Validate the product sub category with expected datatable");
+	    
+	    
+	    }
 	    
 	    
 	    public void productListingPageTitleValidation()
@@ -94,21 +100,86 @@ public class ProductListingPageObject {
 
 		public void clickOnexpressdelivery() {
 			// TODO Auto-generated method stub
-			WebElement expressdelivery =driver.findElement(By.xpath("//*[@id='narrow-by-list']/div[2]/dt"));
-	    	
+			WebElement expressdelivery =driver.findElement(By.xpath("//div[@class='select-filter-options ps_hide']"));
+	    	////*[@id="filterTags"]/div
+			
+			////*[@id='narrow-by-list']/div[2]/dt
 	    	JavascriptExecutor express = (JavascriptExecutor) driver;
 	    	express.executeScript("arguments[0].click();", expressdelivery );
 	    	scn.log("Express-Delivery button is displayed");
 	    	logger.info("Express-Delivery button is displayed");
+	    	
+	    	WebElement expressdelivery11 =driver.findElement(By.xpath("//*[@id='filterTags']"));
+//expressdelivery.click();
+	    	JavascriptExecutor express1 = (JavascriptExecutor) driver;
+	    	express1.executeScript("arguments[0].click();", expressdelivery11 );
+	    
+		}
+	      
+	    
+
+		public void clickOnMoreFilter1() {
+			// TODO Auto-generated method stub
+			WebElement morefilter=driver.findElement(By.xpath("//*[@id='narrow-by-list']/div[7]/dt")); 
+			   JavascriptExecutor more = (JavascriptExecutor) driver;
+			   more.executeScript("arguments[0].click();", morefilter);
+	    	scn.log("MoreFilter button is displayed");
+	    	logger.info("MoreFilter button is displayed");
 	    	
 	    	
 
 
 	    
 		}
-	      
-	    
-	    
-	    
+
+		public void clickOnMoreFilter() {
+			// TODO Auto-generated method stub
+			WebElement morefilter=driver.findElement(By.xpath("//*[@id='narrow-by-list']/div[7]/dt")); 
+			   JavascriptExecutor more = (JavascriptExecutor) driver;
+			   more.executeScript("arguments[0].click();", morefilter);
+	    	scn.log("MoreFilter button is displayed");
+	    	logger.info("MoreFilter button is displayed");
+		}
+
+		
+		
+		public void SelectCombinationOfMoreFilter() {
+			
+			WebElement price=driver.findElement(By.xpath("//*[@id='narrow-by-list']/div[9]/div[2]/div/div[2]"));
+			price.click();
+
+     WebElement price1=driver.findElement(By.xpath("//*[@id='price']/form/ol/li[3]"));
+	      price1.click();
+
+			WebElement rating=driver.findElement(By.xpath("//*[@id='narrow-by-list']/div[9]/div[2]/div/div[4]"));
+			 rating.click();
+
+			WebElement rating1=driver.findElement(By.xpath("//*[@id='rating']/form/ol/li[1]"));
+			       rating1.click(); 
+			       
+			       WebElement shopfor=driver.findElement(By.xpath("//*[@id='narrow-by-list']/div[9]/div[2]/div/div[6]"));
+			       shopfor.click();
+
+			WebElement shopfor1=driver.findElement(By.xpath("//*[@id='gender']/form/ol/li[4]"));
+			shopfor1.click(); 
+
+			
+			WebDriverWait wait = new WebDriverWait(driver, 30);   
+			
+		}
+
+		public void chooseToBuyProduct() {
+			
+			List<WebElement> firstProd = driver.findElements(By.xpath("//*[@id=\"amasty-shopby-product-list\"]/div[2]/ol/li"));
+			JavascriptExecutor js = (JavascriptExecutor) driver;
+			 js.executeScript("window.scrollBy(0,350)", "");
+
+			firstProd.get(0).click();
+			 //Thread.sleep(3000);
+		}
+
+		
+		
+		
 }   
 	    

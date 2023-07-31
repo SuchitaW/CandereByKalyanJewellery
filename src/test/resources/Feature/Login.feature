@@ -23,16 +23,17 @@ Feature: E-Commerce website healthcheck
   @CreateAccount
   Scenario Outline: User is able to Create Account into the application
     When User see Your Account and click on  SignUp  from home page
-    When User redirected to create account page of the application where title us "Online Jewellery Shopping India | Candere By Kalyan Jewellers | Most Trusted Online Jewellery Store"
     And User enters  "<name>"  and  "<emailid>" and "<mobileno>"
-    And User click on Create Account
+    And User click on Send Otp
+    And User enter otp
+    And Click on Verify Otp & Register
     Then User successfully redirected to "Online Jewellery Shopping India | Candere By Kalyan Jewellers | Most Trusted Online Jewellery Store"
 
     Examples: 
-      | name   | emailid               | mobileno   |
-      | Rdfddweg | Hfejhg@gmail.com       | 9945786760 |
-      | hjgksfder | wewqqFkjdd3e@gmail.com | 9978376456 |
+      | name  | emailid              | mobileno   |
+      | pqrst | test1212@candere.com | 1234444444 |
 
+  #| dsfee | wetry43e@gmail.com | 9978376456 |
   @login
   Scenario Outline: User is able to login into the application
     When User see Your Account and click on  Log In  from home page
@@ -42,38 +43,41 @@ Feature: E-Commerce website healthcheck
     Then User successfully redirected to homepage "Online Jewellery Shopping India | Candere By Kalyan Jewellers | Most Trusted Online Jewellery Store"
 
     Examples: 
-      | Emailid or mobileno    |
-      | suchitatayde@gmail.com |
-      
-      @Search
+      | Emailid or mobileno |
+      |          1234444444 |
+
+  @LoginUsingGoogle
+  Scenario: User is able to login into the application
+    When User see Your Account and click on  Log In  from home page
+    And User click on Login Using Google
+    And User enters Emailid or mobileno ,password and click on next button
+    Then User successfully redirected to homepage
+
+  @Search
   Scenario: Validate doubleclicksearch is working
     When User doubleclick  in search box
     Then User see the popular search box is appear
-    
-    @Searchprod1
+
+  @Searchprod1
   Scenario: User is able to Open the browser, navigate to the URL and Search for Product
     When User navigated to the home application url
     And User Search for product on search bar "ring"
     Then Search Result page is displayed with title contains "Gold & Diamond Ring Designs for Men & Women - Candere by Kalyan Jewellers"
-    
-    
-    
-    
-    #@Wishlist
-  #Scenario Outline: Validate if a registered user is able to add item to wishlist and place an order.
-    #When User is logged onto the Candere website as a registered user.
-    #And User enters "<Emailid or mobileno>"
-    #And User click on continue button
-    #And User enter otp manually and click on login
-    #Then User successfully redirected to homepage "Online Jewellery Shopping India | Candere By Kalyan Jewellers | Most Trusted Online Jewellery Store"
-    #When User search for "<product>"
-    #And Choose to add product to wishlist
-    #And Click on wishlist icon
-    #And Move this item to bag
-    #And Click on proceed to check out
-    #Then User click on continue payment page is display
-#
-    #Examples: 
-      #| Emailid or mobileno       | product |
-      #| suchita.tayde@candere.com | Necklace |
-    #
+
+  @Wishlist
+  Scenario Outline: Validate if a registered user is able to add item to wishlist and place an order.
+    When User see Your Account and click on  Log In  from home page
+    And User enters "<Emailid or mobileno>"
+    And User click on continue button
+    And User enter otp manually and click on login
+    Then User successfully redirected to homepage "Online Jewellery Shopping India | Candere By Kalyan Jewellers | Most Trusted Online Jewellery Store"
+    When User search for "<product>"
+    And Choose to add product to wishlist
+    And Click on wishlist icon
+    And Move this item to bag
+    And Click on proceed to check out
+    Then User click on continue payment page is display
+
+    Examples: 
+      | Emailid or mobileno       | product  |
+      | suchita.tayde@candere.com | Necklace |

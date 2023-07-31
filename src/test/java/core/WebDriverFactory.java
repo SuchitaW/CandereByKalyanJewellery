@@ -19,10 +19,14 @@ public class WebDriverFactory {
 //====================== Method to get WebDriver for Browser =========================================//
 	public static WebDriver getWebDriverForBrowser(String browser)
 	{
+		
+		ChromeOptions options=new ChromeOptions();
+		options.addArguments("disable-notifications"); 
+		
 		switch(browser.toLowerCase())
 		{
 		case "chrome":
-			driver= new ChromeDriver();
+			driver= new ChromeDriver(options);
 			logger.info("Chrome browser invoked");
 			break;
 		case "firefox":

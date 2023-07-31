@@ -167,6 +167,9 @@ public class HomePageObjects {
             
 	    	driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 	    	
+	    	logger.info("Scroll up to the SignUp and Spin");
+    		scn.log("Scroll up to the SignUp and Spin");
+	    	
 	    }	
 	    } 
     
@@ -183,6 +186,7 @@ public class HomePageObjects {
 		            Thread.sleep(5000);
 			    	//driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
 			    	logger.info("Clicked on Sign up & Spin! button");
+			    	scn.log("Clicked on Sign up & Spin! button");
 			    	
 			    } 
 	    
@@ -245,12 +249,12 @@ public class HomePageObjects {
 		    	Prodcat.click();		    	
 		    	WebDriverWait wait = new WebDriverWait(driver, 30);
 		    	logger.info("Product Listing page is display");
-		    	scn.log("User clicked on a any product");
+		    	scn.log("User clicked on a any product category");
 		    }	
 		    	
 		    public void validateProductListPageTitle() {
 		    
-		    String productlistPageTitle= "Buy Bracelets Online in India I Bracelets Designs @ Best Price | Candere by Kalyan Jewellers";
+		    String productlistPageTitle= "500+ Gold Bracelet Designs for Men & Women @ Best Price - Candere by Kalyan Jewellers.";
 
 			WebDriverWait wait = new WebDriverWait(driver, 30);
 			boolean p =wait.until(ExpectedConditions.titleIs(productlistPageTitle));
@@ -261,20 +265,32 @@ public class HomePageObjects {
 		    
 		    }
 
-		    public void scrolldownShowMeMore()
+		    public void scrolldownShowMeMore() throws Exception
 		    {
 		 	   
-		    	js= (JavascriptExecutor)driver;
-	            js.executeScript("window.scrollBy(0,650)", "");
-		    	
+		    	JavascriptExecutor	js= (JavascriptExecutor)driver;
+		    	js.executeScript("window.scrollBy(0,900)", "");
+
+	            logger.info("Scroll down to  the Show Me More");
+	    		scn.log("Scroll down to the Show Me More");
+	    		//Thread.sleep(5000);
 		    }	
 		    
 		    public void clickOnShowMeMore()
 		    {
-		 	   
+		    	
 		    	WebElement showMeMore = driver.findElement(By.xpath("//a[normalize-space()='Show Me More']"));
-		    	showMeMore.click();		    	
-		    	WebDriverWait wait = new WebDriverWait(driver, 30);
+		    	((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView(true);", showMeMore);
+		    	
+		    	showMeMore.click();
+		    	
+		    	//WebElement l=driver.findElement(By.xpath("//*[text()='ABOUT US']"));
+		        // Javascript executor
+//		        ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView(true);", showMeMore);
+//		    	
+//		    	JavascriptExecutor sh=(JavascriptExecutor)driver;
+//		    	sh.executeScript("argument[0],click",showMeMore);
+		    	//WebDriverWait wait = new WebDriverWait(driver, 50);
 		    	logger.info("More Collection page is display");
 		    	scn.log("User clicked on Show Me More");
 		    }	
