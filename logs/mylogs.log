@@ -1,14 +1,13 @@
-2023-Jul-31 17:29:26 pm [main] INFO  core.WebDriverFactory - Chrome browser invoked
-2023-Jul-31 17:29:26 pm [main] INFO  core.WebDriverFactory - browser window maximized and set timeout is 20 second
-2023-Jul-31 17:29:31 pm [main] INFO  core.WebDriverFactory - navigate to url
-2023-Jul-31 17:29:33 pm [main] INFO  PageObjects.SignUpPageObject - Click on the User Icon
-2023-Jul-31 17:29:33 pm [main] INFO  PageObjects.SignUpPageObject - Click on the logIn Button
-2023-Jul-31 17:29:49 pm [main] INFO  PageObjects.ProdductDescPageObjects - Product description page is display
-2023-Jul-31 17:29:52 pm [main] INFO  PageObjects.ProdductDescPageObjects - Add to cart button is displayed
-2023-Jul-31 17:30:08 pm [main] INFO  StepDefination.HomeStepDef - Checkout Securely button is displayed
-2023-Jul-31 17:30:09 pm [main] INFO  PageObjects.PaymentPageObjects - Clicked on Continue Button
-2023-Jul-31 17:30:13 pm [main] INFO  PageObjects.PaymentPageObjects - Scroll Up
-2023-Jul-31 17:30:19 pm [main] INFO  PageObjects.PaymentPageObjects - Click on Bill to This Address Checkbox
-2023-Jul-31 17:30:23 pm [main] INFO  PageObjects.PaymentPageObjects - Click on Continue button
-2023-Jul-31 17:30:25 pm [main] INFO  PageObjects.PaymentPageObjects - Credit / Debit Card Payment Option is displayed
-2023-Jul-31 17:31:10 pm [main] INFO  core.WebDriverFactory - Quit the browser
+2023-Aug-09 11:19:21 am [main] INFO  core.WebDriverFactory - Chrome browser invoked
+2023-Aug-09 11:19:21 am [main] INFO  core.WebDriverFactory - browser window maximized and set timeout is 20 second
+2023-Aug-09 11:19:26 am [main] INFO  core.WebDriverFactory - navigate to url
+2023-Aug-09 11:19:27 am [main] INFO  PageObjects.HomePageObjects - Sent the keys to search box as -> ring
+2023-Aug-09 11:19:30 am [main] INFO  PageObjects.HomePageObjects - Clicked on search button
+2023-Aug-09 11:19:34 am [main] INFO  StepDefination.HomeStepDef - Product description page is display
+2023-Aug-09 11:19:35 am [main] INFO  StepDefination.HomeStepDef - Add to cart button is displayed
+2023-Aug-09 11:19:46 am [main] INFO  StepDefination.HomeStepDef - Checkout Securely button is displayed
+2023-Aug-09 11:19:47 am [main] INFO  StepDefination.HomeStepDef - Otp send successful
+2023-Aug-09 11:19:54 am [main] INFO  PageObjects.HomePageObjects - Enter otp 
+2023-Aug-09 11:20:17 am [main] INFO  PageObjects.PaymentPageObjects - Click on Continue button
+2023-Aug-09 11:20:25 am [main] INFO  PageObjects.PaymentPageObjects - Credit / Debit Card Payment Option is displayed
+2023-Aug-09 11:21:59 am [main] INFO  core.WebDriverFactory - Quit the browser

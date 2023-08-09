@@ -32,7 +32,7 @@ public class FooterSectionObjects {
 
 //============= Expected Results ==========================================================//
 
-	String twitterPageTitle= "Log in to Twitter / Twitter";
+	String twitterPageTitle= "Log in to Twitter / X";
 	String facebookPageTitle= "Candere by Kalyan Jewellers | Facebook";
 
 
@@ -74,9 +74,7 @@ public class FooterSectionObjects {
     	logger.info("Validate twitter account page with its title, title is: "+ twitterPageTitle);
     	scn.log("navigate to twitter account page, page title is: "+ twitterPageTitle);
     	
-    	
-    	
-    
+  
     }
 
     

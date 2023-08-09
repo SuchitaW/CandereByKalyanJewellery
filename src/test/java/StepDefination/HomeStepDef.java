@@ -1,5 +1,6 @@
 package StepDefination;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
@@ -9,6 +10,7 @@ import org.apache.logging.log4j.Logger;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -18,6 +20,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import PageObjects.CartPageObjects;
 import PageObjects.FooterSectionObjects;
 import PageObjects.HeaderSectionObjects;
 import PageObjects.HomePageObjects;
@@ -61,6 +64,8 @@ public class HomeStepDef {
 	PaymentPageObjects paymentobject;
 	ShippingPageObject shippingobject;
 	MyAccountSectionObjects myaccountObject;
+	
+	CartPageObjects cartobject;
 //====================== Before Hook =========================================================//	
 	@Before
 	public void setUp(Scenario scn)
@@ -74,7 +79,7 @@ public class HomeStepDef {
 
 		//Initialize object of page objects classes 
 		 homePageObject= new HomePageObjects(driver, scn);
-	   footerPageObject=new FooterSectionObjects(driver, scn);
+	      footerPageObject=new FooterSectionObjects(driver, scn);
 		 signUpPageObject= new SignUpPageObject(driver, scn);
 		 headerObject= new HeaderSectionObjects(driver, scn);
 		 productListingObject =new ProductListingPageObject(driver, scn);
@@ -82,6 +87,8 @@ public class HomeStepDef {
 		 myaccountObject=new MyAccountSectionObjects(driver,scn);
 			paymentobject=new PaymentPageObjects(driver, scn);
 	shippingobject=new ShippingPageObject(driver, scn);
+	
+	cartobject=new CartPageObjects(driver, scn);
 	}
 
 //====================== After Hook =========================================================//
@@ -325,7 +332,7 @@ public void user_is_able_to_see_sub_categories(int prodsubcatagory) {
 public void the_categories_having_the_option_and(String subcategoryOneNameExp1, String subcategoryTwoNameExp1, String subcategoryThreeNameExp1,String subcategoryFourNameExp1) {
 	List<WebElement> prodMainCatListEle1 = driver.findElements(By.xpath("//*[@id=\"store.links\"]/nav/div/div/div/div/ul/li[2]/div/div/div[1]/div/p"));
 
-	Assert.assertEquals(subcategoryOneNameExp1, prodMainCatListEle1.get(0).getText());
+Assert.assertEquals(subcategoryOneNameExp1, prodMainCatListEle1.get(0).getText());
 Assert.assertEquals(subcategoryTwoNameExp1, prodMainCatListEle1.get(1).getText());
 Assert.assertEquals(subcategoryThreeNameExp1, prodMainCatListEle1.get(2).getText());
 Assert.assertEquals(subcategoryFourNameExp1, prodMainCatListEle1.get(3).getText());
@@ -399,13 +406,14 @@ public void under_shop_by_occasion_category_below_options_are_visible(List<Strin
 	   WebElement offers=driver.findElement(By.xpath("//a[normalize-space()='Offers']"));
 	   Actions act=new Actions(driver);
 	   act.moveToElement(offers).build().perform();
-	   //wait= new WebDriverWait(driver,50);
+
+
 	}
 
 	   @When("User are able to see all the offer product and click on any offer")
 	   public void user_are_able_to_see_all_the_offer_product_and_click_on_any_offer() {
 		   List<WebElement> offersprod = driver.findElements(By.xpath("//*[@id=\"store.links\"]/nav/div/div/div/div/ul/li[12]/div/div/div/div/a/img"));
-		  homePageObject.capturePassScreenshot(scn);
+		    homePageObject.capturePassScreenshot(scn);
 		    offersprod.get(0).click();
 			logger.info("Product offer");
 		     scn.log("User see all the product offers");
@@ -614,7 +622,7 @@ signUpPageObject.signInBtnValidation();
 @When("User click on Your Account button")
 public void user_click_on_your_account_button() throws Exception {
 	Thread.sleep(3000);
-signUpPageObject.clickOnSignInBtn();
+signUpPageObject.clickOnUserIcon();
 }
 @Then("User is on Your Account page which have expected page title as {string}")
 public void user_is_on_your_account_page_which_have_expected_page_title_as(String SignInPageTitle) {
@@ -626,7 +634,7 @@ public void user_is_on_your_account_page_which_have_expected_page_title_as(Strin
 
 @When("User see Your Account and click on  SignUp  from home page")
 public void user_see_your_account_and_click_on_sign_up_from_home_page() {
-  signUpPageObject.clickOnSignInBtn();
+  signUpPageObject.clickOnUserIcon();
   signUpPageObject.clickOnSignUp();
   
 }
@@ -654,6 +662,8 @@ mobilenoInputFieldElement.sendKeys(mobileno);
 public void user_click_on_send_otp() {
 	WebElement sendotp = driver.findElement(By.xpath("//button[@title='Send Otp']"));
 	sendotp.click();
+	scn.log("Otp send successful");
+	logger.info("Otp send successful");
 
 }
 
@@ -661,28 +671,7 @@ public void user_click_on_send_otp() {
 @When("User enter otp")
 public void user_enter_otp() throws Exception {
 	
-	
-	//WebElement otp11 = driver.findElement(By.xpath("//div[@id='register_verifyotp']//div[@id='otp-login']"));
-	//otp11.sendKeys("1 2 3 4 5 6");
-	
-	WebElement otp1 = driver.findElement(By.xpath("//div[@id='register_verifyotp']//input[@name='otp1']"));
-	otp1.sendKeys("1");
-	Thread.sleep(500);
-	WebElement otp2 = driver.findElement(By.xpath("//div[@id='register_verifyotp']//input[@name='otp2']"));
-	otp2.sendKeys("2");
-	Thread.sleep(500);
-	WebElement otp3 = driver.findElement(By.xpath("//div[@id='register_verifyotp']//input[@name='otp3']"));
-	otp3.sendKeys("3");
-	Thread.sleep(500);
-	WebElement otp4 = driver.findElement(By.xpath("//div[@id='register_verifyotp']//input[@name='otp4']"));
-	otp4.sendKeys("4");
-	Thread.sleep(500);
-	WebElement otp5 = driver.findElement(By.xpath("//div[@id='register_verifyotp']//input[@name='otp5']"));
-	otp5.sendKeys("5");
-	Thread.sleep(500);
-	WebElement otp6 = driver.findElement(By.xpath("//div[@id='register_verifyotp']//input[@name='otp6']"));
-	otp6.sendKeys("6");
-	Thread.sleep(500);
+	homePageObject.validateRegisterOTP();
 
 }
 @When("Click on Verify Otp & Register")
@@ -696,40 +685,12 @@ public void user_successfully_redirected_to(String SignInPageTitle) {
 signUpPageObject.validateSignInPage(SignInPageTitle);
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-//@When("User click on Create Account")
-//public void user_click_on_create_account() throws Exception  {
-//	WebElement createaccountButtonElement = driver.findElement(By.xpath("//span[normalize-space()='create account']"));
-//	createaccountButtonElement.click();
-//	Thread.sleep(7000);
-//}
-//
-//@Then("User successfully redirected to {string}")
-//public void user_successfully_redirected_to(String SignInPageTitle)  {
-//	signUpPageObject.validateSignInPage(SignInPageTitle);
-//	signUpPageObject.validationtakescreenshot(scn);
-//	
-	
-	
-//}
-
 //==============================LogIn================================================
 
 
 @When("User see Your Account and click on  Log In  from home page")
 public void user_see_your_account_and_click_on_log_in_from_home_page() throws Exception {
-	signUpPageObject.clickOnSignInBtn();
+	signUpPageObject.clickOnUserIcon();
 	//Thread.sleep(3000);
 	signUpPageObject.clickOnLogIn();
 }
@@ -764,42 +725,20 @@ public void user_click_on_continue_button() throws InterruptedException {
 }
 
 @When("User enter otp manually and click on login")
-public void user_enter_otp_manually_and_click_on_login() throws InterruptedException {
-	//Thread.sleep(10000);  
+public void user_enter_otp_manually_and_click_on_login() throws Exception {
+ 
+	homePageObject.validateLoginOTP();
 	
-	
-	WebElement otp1 = driver.findElement(By.xpath("//*[@id='otp-login']/input[1]"));
-	otp1.sendKeys("1");
-	Thread.sleep(500);
-	WebElement otp2 = driver.findElement(By.xpath("//*[@id='otp-login']/input[2]"));
-	otp2.sendKeys("2");
-	Thread.sleep(1000);
-	WebElement otp3 = driver.findElement(By.xpath("//div[@class='login_steps_wrapper']//input[@name='otp3']"));
-	otp3.sendKeys("3");
-	Thread.sleep(1000);
-	WebElement otp4 = driver.findElement(By.xpath("//div[@class='login_steps_wrapper']//input[@name='otp4']"));
-	otp4.sendKeys("4");
-	Thread.sleep(1000);
-	WebElement otp5 = driver.findElement(By.xpath("//div[@class='login_steps_wrapper']//input[@name='otp5']"));
-	otp5.sendKeys("5");
-	Thread.sleep(1000);
-	WebElement otp6 = driver.findElement(By.xpath("//div[@class='login_steps_wrapper']//input[@name='otp6']"));
-	otp6.sendKeys("6");
-	Thread.sleep(1000);
-	
-
-	WebElement loginButtonElement = driver.findElement(By.xpath("//*[@id='customer-popup-login-form-three']/fieldset/div[3]/button"));
-	loginButtonElement.click();
-	//scn.log("User enter otp manually");
+	homePageObject.clickOnSLogin();
 	
 	
 }
 
 @Then("User successfully redirected to homepage {string}")
 public void user_successfully_redirected_to_homepage(String SignInPageTitle) throws Exception {
-  //Thread.sleep(3000);
+ 
 	signUpPageObject.validateSignInPage(SignInPageTitle);
-homePageObject.capturePassScreenshot(scn);
+     homePageObject.capturePassScreenshot(scn);
 
 }
 
@@ -963,16 +902,17 @@ public void the_product_list_page_is_displayed1() {
 }
 
 
+@Then("User are able to count the per page item in plp")
+public void user_are_able_to_count_the_per_page_item_in_plp() {
+    
+	productListingObject.CountNoofProduct();
+	
+}
+
 //===================================Morefilter==================================
 @When("User click on pendants on landing page")
 public void user_click_on_pendants_on_landing_page() throws Exception {
-	   WebElement pendants = driver.findElement(By.xpath("//*[@id='store.links']/nav/div/div/div/div/ul/li[4]/a"));
-	    pendants.click();
-	    
-	    Thread.sleep(2000);
-	 JavascriptExecutor js=((JavascriptExecutor) driver);
-	    
-	 js.executeScript("window.scrollBy(0,500)","");
+	  productListingObject.ClickOnPendant();
 	   
 }
 
@@ -995,7 +935,7 @@ public void user_select_the_any_combination_of_product_as_per_there_choice() thr
 public void user_are_able_to_see_the_combination_of_product() throws Exception {
 	 WebElement apply=driver.findElement(By.xpath("//div[@class='filter_btn_ apply__']"));
       apply.click();
-      
+      Thread.sleep(3000);
     homePageObject.capturePassScreenshot(scn);
       Thread.sleep(3000);
 }
@@ -1019,13 +959,18 @@ public void user_are_able_to_clear_all_the_filters() {
 public void user_scrolldown_to_the_bootom_of_the_page() throws Exception {
 
 	
-	WebElement Loadmore11 = driver.findElement(By.xpath("(//div[@class='amscroll-load-button'])[1]"));
-	((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", Loadmore11);
+//	WebElement Loadmore11 = driver.findElement(By.xpath("(//div[@class='amscroll-load-button'])[1]"));
+//	((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", Loadmore11);
 	
-//	WebDriverWait wait = new WebDriverWait(driver, 30);
-//	wait.until(ExpectedConditions.presenceOfElementLocated(Loadmore11);
-   
 	
+	JavascriptExecutor js = (JavascriptExecutor) driver;
+	 js.executeScript("window.scrollBy(0,2500)", "");
+	 
+	 Thread.sleep(2000);
+	 
+	 JavascriptExecutor js2 = (JavascriptExecutor) driver;
+	 js2.executeScript("window.scrollBy(0,-500)", "");
+
 
 
 
@@ -1035,13 +980,11 @@ public void user_scrolldown_to_the_bootom_of_the_page() throws Exception {
 public void user_click_on_load_more_button() throws Exception {
 	 
 	Thread.sleep(3000);
-	WebElement Loadmore1 = driver.findElement(By.xpath("(//div[@class='amscroll-load-button'])[1]"));
+	  WebElement Loadmore1 = driver.findElement(By.xpath("(//div[@class='amscroll-load-button'])[1]"));
 	    
 		Loadmore1.click();
 		
-		
-		JavascriptExecutor js=((JavascriptExecutor) driver);
-		   
+		JavascriptExecutor js=((JavascriptExecutor) driver); 
 		js.executeScript("window.scrollBy(0,500)","");
 		Thread.sleep(6000);
 		homePageObject.capturePassScreenshot(scn);
@@ -1071,21 +1014,12 @@ public void user_click_on_filter_by_price_criteria() throws Exception {
 	//Relevance.click();
 	
 	WebElement Lowtohigh=driver.findElement(By.xpath("//*[@id='sorter']/li[2]/a"));
-	
 	JavascriptExecutor low = (JavascriptExecutor) driver;
 	low.executeScript("arguments[0].click();", Lowtohigh);
-	
 	Thread.sleep(2000);
-	
-	//Lowtohigh.click();
-	
 	WebElement Hightolow=driver.findElement(By.xpath("//*[@id='sorter']/li[3]/a"));
-	
-	
 	JavascriptExecutor high = (JavascriptExecutor) driver;
 	high.executeScript("arguments[0].click();", Hightolow);
-	//Hightolow.click();
-	
 	Thread.sleep(2000);
 }
 
@@ -1106,7 +1040,7 @@ public void size_of_filter_by_category_should_be(int filtercount) {
 
 	Assert.assertEquals(filtercount, filterbyList1.size());
 	
-  logger.info("validate the Size of filter by category, size is: "+ filterbyList1.size());
+    logger.info("validate the Size of filter by category, size is: "+ filterbyList1.size());
  	   scn.log("validate the Size of filter by category, size is: "+ filterbyList1.size());
 
 }
@@ -1118,7 +1052,6 @@ public void user_click_on_express_delivery() throws Exception {
 
 	productListingObject.clickOnexpressdelivery();
 	
-	//Thread.sleep(15000);
 
 }
 
@@ -1127,9 +1060,6 @@ public void user_click_on_express_delivery() throws Exception {
 @Then("User are able to see the ship fast product listing page")
 public void user_are_able_to_see_the_ship_fast_product_listing_page() {
 
-//	JavascriptExecutor js = (JavascriptExecutor) driver;
-//	 js.executeScript("window.scrollBy(0,350)", "");
-	 
 	 homePageObject.capturePassScreenshot(scn);
 }
 
@@ -1140,13 +1070,15 @@ public void user_are_able_to_see_the_ship_fast_product_listing_page() {
 @When("User click on wishlist icon on plp")
 public void user_click_on_wishlist_icon_on_plp() throws Exception {
 	
-	List<WebElement> wishlistprod = driver.findElements(By.xpath("//a[@title='Add to Wish List']"));
+	List<WebElement> wishlistprod = driver.findElements(By.xpath("//a[starts-with(@id,\"wish_\")]"));
 	wishlistprod.get(0).click();
-	Thread.sleep(5000);
+	Thread.sleep(3000);
+//	wishlistprod.get(1).click();
+//	Thread.sleep(5000);
 	
-WebElement wishlisticon =driver.findElement(By.xpath("//a[@id='wish_44236']"));
-	wishlisticon.click();
-	Thread.sleep(5000);
+//WebElement wishlisticon =driver.findElement(By.xpath("//a[@id='wish_44236']"));
+//	wishlisticon.click();
+//	Thread.sleep(5000);
 }
 
 
@@ -1162,56 +1094,50 @@ homePageObject.capturePassScreenshot(scn);
 
 
 //================================ @plpmetalcolourchange ==============================
-@When("User mouse over to background colour")
-public void user_mouse_over_to_background_colour() {
-WebElement bg =driver.findElement(By.xpath("//*[@id='amasty-shopby-product-list']/div[2]/ol/li[3]/div/div/div[1]/div/div[2]/div[1]"));
-//List<WebElement> firstProdbg = driver.findElements(By.xpath("//*[@id='amasty-shopby-product-list']/div[2]/ol/li/div/div/div[1]/div/div[2]/div[1]/div"));
 
-//firstProdbg.get(2).click();
 
-Actions act=new Actions(driver);
-act.moveToElement(bg).build().perform();
+
+
+@When("User scroll down")
+public void user_scroll_down() {
+
+	JavascriptExecutor js = (JavascriptExecutor) driver;
+	 js.executeScript("window.scrollBy(0,500)", "");
 
 
 }
 
 
+@When("User select the any product")
+public void user_select_the_any_product() {
+List<WebElement> firstProd = driver.findElements(By.xpath("//*[@id=\"amasty-shopby-product-list\"]/div[2]/ol/li"));
+	
+firstProd.get(1).getText();
+
+WebElement bg =driver.findElement(By.xpath("//*[@id='amasty-shopby-product-list']/div[2]/ol/li[3]/div[2]/div/div[1]/div/div[2]/div[2]/a[2]"));
+
+Actions act=new Actions(driver);
+act.moveToElement(bg).build().perform();
+bg.click();
+
+}
+
 @Then("User click on change background like gold and rosegold")
 public void user_click_on_change_background_like_gold_and_rosegold() throws Exception {
-	WebElement bgcolour =driver.findElement(By.xpath("//*[@id='amasty-shopby-product-list']/div[2]/ol/li[3]/div/div/div[1]/div/div[2]/div/a[2]"));
+	WebElement bgcolour =driver.findElement(By.xpath("//*[@id='amasty-shopby-product-list']/div[2]/ol/li[3]/div[2]/div/div[1]/div/div[2]/div[2]/a[2]"));
 	bgcolour.click();
-	Thread.sleep(2000);
+	Thread.sleep(3000);
 	homePageObject.capturePassScreenshot(scn);
 }
 
 //===================================================@plpFilterBySingleSelect=====================================
 
 
-@When("User are able to filter by product type pendants as per choice")
-public void user_are_able_to_filter_by_product_type_pendants_as_per_choice() throws Exception {
-WebElement materialttype = driver.findElement(By.xpath("//*[@id='narrow-by-list']/div[4]"));
+@When("User are able to filter by material type diamond")
+public void user_are_able_to_filter_by_material_type_daiamond() throws Exception {
+
 	
-	Actions act= new Actions(driver);
-	act.moveToElement(materialttype ).build().perform();
-	
-List<WebElement> options = driver.findElements(By.xpath("//*[@id='narrow-by-list']/div[4]/dd/form/ol/li"));
-
-for(int i=0;i<options.size();i++)
-{
-
-	String ptype=options.get(i).getText();
-
-	if(ptype.contains("Diamond"));
-	{
-		
-       options.get(i).click();	
-		
-		break;
-	}
-	
-	}
-
-
+	productListingObject.FilterByMaterialType();
 }
 
 
@@ -1221,10 +1147,7 @@ public void user_see_the_currently_shopping_by_filter() throws Exception {
 homePageObject.capturePassScreenshot(scn);
 
 WebElement clearall=driver.findElement(By.xpath("//*[@id='am-shopby-container']/ol/li[2]"));
-//WebElement clearall=driver.findElement(By.xpath("//*[@id=\"am-shopby-container\"]/ol/li[2]/a/span"));
-
 clearall.click();
-//Thread.sleep(2000);
 
 homePageObject.capturePassScreenshot(scn);
 
@@ -1232,63 +1155,16 @@ homePageObject.capturePassScreenshot(scn);
 
 //=======================================@plpFilterByMultiSelect========================
 
-
-
-
 @When("User are able to filter by material type  and shop for pendants as per choice")
 public void user_are_able_to_filter_by_material_type_and_shop_for_pendants_as_per_choice() throws Exception {
-WebElement materialttype = driver.findElement(By.xpath("//*[@id='narrow-by-list']/div[4]"));
-	
-	Actions m= new Actions(driver);
-	m.moveToElement(materialttype ).build().perform();
-	
-List<WebElement> options1 = driver.findElements(By.xpath("//*[@id='narrow-by-list']/div[4]/dd/form/ol/li"));
-
-for(int i=0;i<options1.size();i++)
-{
-
-	String mtype=options1.get(i).getText();
-
-	if(mtype.contains("Gemstone"));
-	{
-		
-       options1.get(i).click();	
-		
-		break;
-	}
-	
-	}
+productListingObject.FilterByMaterialType();
 
 Thread.sleep(3000);
-WebElement weight = driver.findElement(By.xpath("//*[@id='narrow-by-list']/div[5]"));
 
-Actions w= new Actions(driver);
-w.moveToElement(weight ).build().perform();
-
-List<WebElement> options2 = driver.findElements(By.xpath("//*[@id='narrow-by-list']/div[5]/dd/form/ol/li"));
-
-for(int i=0;i<options2.size();i++)
-{
-
-String wtype=options2.get(i).getText();
-
-if(wtype.contains("6grams – 8grams"));
-{
-	
-   options2.get(i).click();	
-	
-	break;
-}
-
-}
-
+productListingObject.FilterByShopFor();
 Thread.sleep(2000);
 
-
-
-
 }
-
 
 @Then("User see the Currently Shopping by filter and clear all")
 public void user_see_the_currently_shopping_by_filter_and_clear_all() {
@@ -1300,12 +1176,7 @@ public void user_see_the_currently_shopping_by_filter_and_clear_all() {
 	homePageObject.capturePassScreenshot(scn);
 }
 
-
-
-
 //===================================================PDP Page==============================================================
-
-
 
 @When("User mousehover on Ring option")
 public void user_mousehover_on_ring_option() {
@@ -1340,7 +1211,8 @@ public void user_click_on_any_of_the_product() {
 	// But as this step asks click on any link, we can choose to click on Index 0 of
 	// the list
 	firstProd.get(2).click();
-	 //Thread.sleep(3000);
+//firstProd.get(0).getText();
+
 	logger.info("Product description page is display");
 	scn.log("User clicked on a product");
 }
@@ -1357,7 +1229,7 @@ public void product_description_is_displayed_in_new_tab() {
 public void user_mouse_over_on_metal_video_thumbnail() throws Exception {
 	
 	js= (JavascriptExecutor)driver;
-	js.executeScript("window.scrollBy(0,250)", "");
+	js.executeScript("window.scrollBy(0,300)", "");
 	
 	WebElement ring=driver.findElement(By.xpath("//img[@class='metal-video-thumbnail']"));
 	Actions act=new Actions(driver);
@@ -1369,13 +1241,14 @@ public void user_mouse_over_on_metal_video_thumbnail() throws Exception {
 
 @Then("User are able to see xzoom-thumbs slick-initialized slick-slider slick-vertical is working properly")
 public void user_are_able_to_see_xzoom_thumbs_slick_initialized_slick_slider_slick_vertical_is_working_properly() throws Exception {
-	
+
+
 	WebElement next=driver.findElement(By.xpath("//button[@aria-disabled='false']"));
 	next.click();
+	//Thread.sleep(1000);
 	
-	Thread.sleep(1000);
-	WebElement Previous=driver.findElement(By.xpath("//*[@id='magnific']/div[2]/div/button[1]"));
-	Previous.click();
+//	WebElement Previous=driver.findElement(By.xpath("//button[@class='slick-prev slick-arrow slick-disabled']"));
+//	Previous.click();
 	
 	Thread.sleep(1000);
 }
@@ -1386,14 +1259,7 @@ public void user_are_able_to_see_xzoom_thumbs_slick_initialized_slick_slider_sli
 @Then("User scroll down and check the functionality of TryON")
 public void user_scroll_down_and_check_the_functionality_of_try_on() throws Exception {
 
-	js= (JavascriptExecutor)driver;
-	js.executeScript("window.scrollBy(0,450)", "");
-	
-	WebElement tryOn=driver.findElement(By.xpath("//button[@id='product-MirrAR-Button']"));
-	tryOn.click();
-	
-	Thread.sleep(15000);
-	
+	productDescObject.ClickOnTryON();
 	homePageObject.capturePassScreenshot(scn);
 	
 }
@@ -1411,9 +1277,7 @@ public void user_scroll_down_and_check_the_functionality_of_try_on() throws Exce
 @When("User click on any product type earring")
 public void user_click_on_any_product_type_earring() {
 	List<WebElement> firstProd = driver.findElements(By.xpath("//ol[@class=\"products list items product-items\"]//li//div"));
-	
 	firstProd.get(0).click();
-	 //Thread.sleep(3000);
 	logger.info("Product description page is display");
 	scn.log("User clicked on a product");
 }
@@ -1467,33 +1331,13 @@ public void user_see_the_thank_u_messagepopup_and_click_on_ok_button() {
 
 @When("User click on View Details")
 public void user_click_on_view_details() throws Exception {
-	WebElement viewdetails =driver.findElement(By.xpath("//a[normalize-space()='View Details']"));
-	viewdetails.click();
-	Thread.sleep(3000);
-}
-
-
-@When("User scroll down to view detail")
-public void user_scroll_down_to_view_detail() {
-	js= (JavascriptExecutor)driver;
-	js.executeScript("window.scrollBy(0,350)", "");
-}
-@When("User click on Metal details and Product Details")
-public void user_click_on_metal_details_and_product_details() throws Exception {
-	WebElement metal =driver.findElement(By.xpath("//div[@class='item title']"));
-	metal.click();
-	//Thread.sleep(3000);
 	
-	WebElement gemstone =driver.findElement(By.xpath("//div[@class='item title']"));
-	gemstone.click();
-	//Thread.sleep(3000);
+
+productDescObject.ClickOnViewDetails();
+
 }
-@Then("User go back to up")
-public void user_go_back_to_up() throws Exception {
-	WebElement back =driver.findElement(By.xpath("//a[@id='back-to-top']"));
-	back.click();
-	Thread.sleep(3000);
-}
+
+
 
 //=====================================================
 
@@ -1506,11 +1350,7 @@ public void user_select_the_ring_size() {
 	WebElement ringsizedropdown =driver.findElement(By.xpath("//select[@id='mt_size']"));
 	Select size=new Select(ringsizedropdown);
 	size.selectByValue("25");
-//	Thread.sleep(3000);
-//	size.selectByIndex(4);
-//	Thread.sleep(3000);
-//	size.selectByVisibleText("10");
-//	Thread.sleep(3000);
+
 }
 
 @When("User enters {string} and click on Check button")
@@ -1565,76 +1405,196 @@ public void user_are_able_to_see_the_select_the_shipfast() throws Exception {
 
 //======================================= @pdpPageCustomization=================
 
-@When("User click on Customize this product and change the Metal Color,purity and quality")
-public void user_click_on_customize_this_product_and_change_the_metal_color_purity_and_quality() throws Exception {
-	
+
+
+@When("User scroll down and click on Customize this product")
+public void user_scroll_down_and_click_on_customize_this_product() throws Exception {
+
+	productDescObject.ClickOnCustomizeproduct();
+
+}
+
+@When("User are able to change the Metal Color,purity and quality")
+public void user_are_able_to_change_the_metal_color_purity_and_quality() throws Exception {
+   productDescObject.ChangeMetalcolourpurityqty();
+}
+@When("User scroll up and check price are getting updated")
+public void user_scroll_up_and_check_price_are_getting_updated() throws InterruptedException {
 	js= (JavascriptExecutor)driver;
-	js.executeScript("window.scrollBy(0,800)", "");
+
+	js.executeScript("window.scrollBy(0,-400)", "");
 	
-	WebElement customize = driver.findElement(By.xpath("//div[@class='customisation_toggle']"));
-	customize .click();
+	Thread.sleep(3000);
 	
-	WebElement metalcolor = driver.findElement(By.xpath("//*[@id='tabs-1']/div[1]/div/label[3]/p"));
-	metalcolor .click();
+	signUpPageObject.validationtakescreenshot(scn);
+	
+}
+
+
+@When("User click on Price breakup link")
+public void user_click_on_price_breakup_link() throws Exception {
+
+productDescObject.ClickOnPriceBreakup();
+
+//signUpPageObject.validationtakescreenshot(scn);
+
+}
+
+@When("User scroll down to view detail")
+public void user_scroll_down_to_view_detail() throws Exception {
+	js= (JavascriptExecutor)driver;
+	js.executeScript("window.scrollBy(0,350)", "");
+	
+	Thread.sleep(3000);
+	
+signUpPageObject.validationtakescreenshot(scn);
+
+}
+@When("User click on Metal details and diamond Details")
+public void user_click_on_metal_details_and_product_details() throws Exception {
+
+	productDescObject.ClickOnMetaldetails();
+	
+	signUpPageObject.validationtakescreenshot(scn);
+	
+	productDescObject.ClickOnDiamonddetails();
+	
+	signUpPageObject.validationtakescreenshot(scn);
+	
+}
+@Then("User go back to up")
+public void user_go_back_to_up() throws Exception {
+	WebElement back =driver.findElement(By.xpath("//a[@id='back-to-top']"));
+	back.click();
+	Thread.sleep(3000);
+}
+
+
+
+
+@When("User click on Speak and Chat with experts link")
+public void user_click_on_speak_and_chat_with_experts_link() throws Exception {
+	WebElement chat =driver.findElement(By.xpath("//a[@title='Chat with Experts']//span[@class='iconBlock']"));
+	chat.click();
+	Thread.sleep(3000);
+}
+
+
+@Then("User are able to see the Share on WhatsApp page")
+public void user_are_able_to_see_the_share_on_whats_app_page() {
+    signUpPageObject.validationtakescreenshot(scn);
+}
+
+
+
+@When("User click on add Engraveing")
+public void user_click_on_add_engraveing() throws Exception {
+   
+	productDescObject.ClickOnAddEngraveing();
+}
+
+@When("User choose Choose a font")
+public void user_choose_choose_a_font() {
+	WebElement font =driver.findElement(By.xpath("//a[@class='engrave-style2 engrv']"));
+	font.click();
+
+}
+@When("Enter Inner Engraving text as per your wish and click on save")
+public void enter_inner_engraving_text_as_per_your_wish_and_click_on_save() {
+	WebElement innertext =driver.findElement(By.xpath("//input[@placeholder='Enter Engraving Text']"));
+	innertext .sendKeys("Shravani");
+	
+
+}
+@Then("User are able to see the Engrave test added successfully")
+public void user_are_able_to_see_the_engrave_test_added_successfully() throws Exception {
+//	WebElement save =driver.findElement(By.xpath("//button[normalize-space()='Save']"));
+//	save.click();
+//	
+Thread.sleep(3000);
+	
+	signUpPageObject.validationtakescreenshot(scn);
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//================================PDP Wishlist==============
+
+
+@When("User click on wishlist icon login signup pop is open")
+public void user_click_on_wishlist_icon_login_signup_pop_is_open() throws Exception {
+	Thread.sleep(3000);
+	WebElement wishlistpdp = driver.findElement(By.xpath("//a[@id='wish_1489']"));
+
+
+	
+	JavascriptExecutor w = (JavascriptExecutor) driver;
+	w.executeScript("arguments[0].click();", wishlistpdp );
+}
+
+
+@When("User successfully add this item into wishlist and click on wishlist icon")
+public void user_successfully_add_this_item_into_wishlist_and_click_on_wishlist_icon() throws Exception {
+//
+
+	Thread.sleep(10000);
+	//headerObject.ClickOnWishlist();
+	WebElement wishlisticon = driver.findElement(By.xpath("//div[@class='link_items link wishlist']/a"));
+	JavascriptExecutor w1 = (JavascriptExecutor) driver;
+	w1.executeScript("arguments[0].click();", wishlisticon );
 	
 	Thread.sleep(5000);
-}
-
-@When("User click on quality or purity the price are getting updated")
-public void user_click_on_quality_or_purity_the_price_are_getting_updated() throws Exception {
-	WebElement metalpurity = driver.findElement(By.xpath("//label[@class='container purity_container active']"));
-	metalpurity .click();
-	Thread.sleep(2000);
-	WebElement quality= driver.findElement(By.xpath("//div[@id='tabs-2']//label[2]"));
-	quality .click();
-	Thread.sleep(2000);
-}
-
-@When("User scroll down to you may also like")
-public void user_scroll_down_to_you_may_also_like() throws Exception {
-	js= (JavascriptExecutor)driver;
-	js.executeScript("window.scrollBy(0,600)", "");
-	Thread.sleep(3000);
-}
-
-@When("User are able  to click the previous button")
-public void user_are_able_to_click_the_previous_button() throws Exception {
-//	WebElement next = driver.findElement(By.xpath("//*[@id='you-may-also-like-d']/div/div[2]/button[2]"));
-//	next .click();
 	
-	WebElement pre = driver.findElement(By.xpath("//*[@id='you-may-also-like-d']/div/div[2]/button[1]"));
-	pre .click();
-	Thread.sleep(3000);
 }
+@Then("User are able to see the product successfully added to wishlist")
+public void user_are_able_to_see_the_product_successfully_added_to_wishlist() {
+
+signUpPageObject.validationtakescreenshot(scn);
+}
+
+
 
 //===========================cart===================================================
 
 
 @When("On cart page user is able to change the product qty and and size")
-public void on_cart_page_user_is_able_to_change_the_product_qty_and_and_size() throws InterruptedException {
-	WebElement dropdownsize =driver.findElement(By.xpath("//select[@class='mt_size']"));
-	Select select=new Select(dropdownsize);
-	select.selectByValue("25");
-	
-	//Thread.sleep(3000);
-	
-	WebElement dropdownqty =driver.findElement(By.xpath("//select[@class='qty custom-qty']"));
-	Select select1=new Select(dropdownqty);
-	select1.selectByValue("2");
-	Thread.sleep(5000);
-//	WebElement checkout3 =driver.findElement(By.xpath("//*[@id=\"maincontent\"]/div[2]/div/div[7]/div[2]/div[2]/button"));
-//	checkout3.click();
-	//Thread.sleep(18000);
+public void on_cart_page_user_is_able_to_change_the_product_qty_and_and_size() throws Exception {
+
+cartobject.SelectProdQtyandSize();
+
 }
 
 
 
+@Then("User are able to see the price updated when the size and quantity changes")
+public void user_are_able_to_see_the_price_updated_when_the_size_and_quantity_changes() {
+   signUpPageObject.validationtakescreenshot(scn);
+}
+
 
 @When("user click on checkout logIn pop is open")
 public void user_click_on_checkout_log_in_pop_is_open() throws Exception {
-	WebElement checkout = driver.findElement(By.xpath("//span[normalize-space()='Checkout Securely']"));
-	checkout.click();
-	Thread.sleep(3000);
+	productDescObject.ClickOnCheckoutSecurely();
 	homePageObject.capturePassScreenshot(scn);
 }
 
@@ -1643,81 +1603,45 @@ public void user_click_on_checkout_log_in_pop_is_open() throws Exception {
 @When("User search for {string}")
 public void user_search_for(String prodName) throws Exception {
 	homePageObject.searchProduct(prodName);
-Thread.sleep(3000);
+     Thread.sleep(3000);
 }
 
 @When("choose to buy the first item")
 public void choose_to_buy_the_first_item() throws Exception {
 	
-	List<WebElement> firstProd = driver.findElements(By.xpath("//*[@id=\"amasty-shopby-product-list\"]/div[2]/ol/li"));
-	// But as this step asks click on any link, we can choose to click on Index 0 of
-	// the list
-	firstProd.get(0).click();
-	 Thread.sleep(3000);
-	 logger.info("Clicked on First product link");
-	
-	scn.log("Clicked on First product link");
-	
-	Set<String> handles = driver.getWindowHandles(); // get all the open windows
-	Iterator<String> it = handles.iterator(); // get the iterator to iterate the elements in set
-	String original = it.next();// gives the parent window id
-	String prodDescp = it.next();// gives the child window id
-
-	driver.switchTo().window(prodDescp); // switch to product Descp
-
-    logger.info("driver is switched back to prodDescp window");
-	
-	
-
+cartobject.ChoosetheProduct();
 
 }
 @When("Add product to shopping cart")
 public void add_product_to_shopping_cart() throws InterruptedException {
-	WebElement addtocart = driver.findElement(By.xpath("//button[@id='product-addtocart-button']"));
-	addtocart.click();
-	scn.log("Add to cart button is displayed");
-    logger.info("Add to cart button is displayed");
-	Thread.sleep(8000);
+
+	
+	productDescObject.ClickOnAddToCart();
 
 }
 @When("User clicks on continue shopping")
 public void user_clicks_on_continue_shopping() throws Exception {
-	WebElement continueshopping = driver.findElement(By.xpath("//span[normalize-space()='Continue Shopping']"));
-	JavascriptExecutor js=((JavascriptExecutor) driver);
-    js.executeScript("arguments[0].scrollIntoView(true);", continueshopping);
-	continueshopping.click();
-	logger.info("Clicked on continue shopping button");
-	Thread.sleep(5000);
+
+	cartobject.clickOnContinueShopping();
 }
 @When("User clicks on My shopping bag and view shopping bag")
 public void user_clicks_on_my_shopping_bag_and_view_shopping_bag() throws Exception {
-	WebElement minibag = driver.findElement(By.xpath("//div[@class='link_items minicart-wrapper']"));
-	Actions act =new Actions(driver);
-	act.moveToElement(minibag).build().perform();
-	WebElement viewshoppingbag = driver.findElement(By.xpath("//a[@class='action viewcart']"));
-	viewshoppingbag.click();
-	logger.info("Clicked on shopping bag button");
+
+	
+	cartobject.clickOnShoppingBag();
 
 }
 @When("Click on proceed to check out")
 public void click_on_proceed_to_check_out() throws InterruptedException {
-	Thread.sleep(3000);
-WebElement checkout1 = driver.findElement(By.xpath("//button[@title='Checkout Securely']"));
-checkout1.click();
-logger.info("Clicked on proceed to checkout button");
-	Thread.sleep(5000);
+
+	productDescObject.ClickOnCheckoutSecurely();
 	
 }
 @Then("User should be asked to login before checkout")
 public void user_should_be_asked_to_login_before_checkout() throws Exception {
-//Thread.sleep(3000);
-String checkOutPageTitle= "Shopping Cart";
-	WebDriverWait wait = new WebDriverWait(driver, 50);
-	boolean p =wait.until(ExpectedConditions.titleIs(checkOutPageTitle));
-	Assert.assertEquals(true, p);
-	logger.info("Validate checkout page with its title, title is: "+ checkOutPageTitle);
-	scn.log("navigate to checkout page , page title is: "+ checkOutPageTitle);
 
+
+	cartobject.ValidateTitleOfCartPage();
 	homePageObject.capturePassScreenshot(scn);
 
 }
@@ -1727,6 +1651,8 @@ String checkOutPageTitle= "Shopping Cart";
 
 @When("User are able to remove the item on cart page")
 public void user_are_able_to_remove_the_item_on_cart_page() throws Exception {
+	
+	
 	WebElement remove= driver.findElement(By.xpath("//a[@title='Remove item']"));
 	remove.click();
 	Thread.sleep(2000);
@@ -1750,12 +1676,7 @@ public void user_clicks_on_ok_buttton() {
 public void user_are_able_to_redirecting_to_checkout_cart_page_with_empty_cart() {
 
 	
-	String cartPageTitle= "Shopping Cart";
-	WebDriverWait wait = new WebDriverWait(driver, 30);
-	boolean p =wait.until(ExpectedConditions.titleIs(cartPageTitle));
-	Assert.assertEquals(true, p);
-	logger.info("Validate cart page with its title, title is: "+ cartPageTitle);
-	scn.log("navigate to cart list page , page title is: "+ cartPageTitle);
+cartobject.ValidateTitleOfCartPage();
 
 }
 
@@ -1765,21 +1686,10 @@ public void user_are_able_to_redirecting_to_checkout_cart_page_with_empty_cart()
 
 @When("User are able to remove the insurance on cart page")
 public void user_are_able_to_remove_the_insurance_on_cart_page() throws Exception {
-
-	js= (JavascriptExecutor)driver;
-	js.executeScript("window.scrollBy(0,100)", "");
 	
-	WebElement checkboxinsurance= driver.findElement(By.xpath("//*[@id='insurance_checbox']"));
-	//checkboxinsurance.click();
-	
-	JavascriptExecutor j = (JavascriptExecutor) driver;
-	j.executeScript("arguments[0].click();", checkboxinsurance);
-
-           Thread.sleep(3000);
+	cartobject.SelectInsurance();
 
 }
-
-
 
 @Then("User are able to see the warning message")
 public void user_are_able_to_see_the_warning_message() {
@@ -1801,13 +1711,9 @@ public void user_are_able_to_see_the_warning_message() {
 //===========================@cartPagecheckoffers=================================
 
 
-
 @When("User click on check offers on cart page")
 public void user_click_on_check_offers_on_cart_page() throws Exception {
-	WebElement checkoffer= driver.findElement(By.xpath("//*[@id='coupon-link']/span"));
-	checkoffer.click();
-	
-	Thread.sleep(3000);
+	cartobject.clickOnCheckOffer();
 }
 
 
@@ -1818,7 +1724,6 @@ public void user_are_able_to_see_the_apply_offer_voucher_popup_on_cart_page() {
 }
 
 //================================ @cartPageManuallycheckoffers=======================
-
 
 
 @When("First we delete the coupon that already applied")
@@ -1839,9 +1744,7 @@ public void enter_the(String couponcode) throws Exception {
 }
 @When("Click on apply")
 public void click_on_apply() throws Exception {
-	WebElement  apply= driver.findElement(By.xpath("//button[@class='base_btn btn_md primary_btn']"));
-	 apply.click();
-	 Thread.sleep(2000);
+	cartobject.clickOnApplyCheckOffer();
 }
 @Then("User are able to see the coupon applied successfully on cart page")
 public void user_are_able_to_see_the_coupon_applied_successfully_on_cart_page() {
@@ -1863,24 +1766,7 @@ public void user_are_able_to_see_the_coupon_applied_successfully_on_cart_page() 
 
 @When("choose to buy the second item")
 public void choose_to_buy_the_second_item() throws Exception {
-	List<WebElement> firstProd = driver.findElements(By.xpath("//*[@id=\"amasty-shopby-product-list\"]/div[2]/ol/li"));
-	// But as this step asks click on any link, we can choose to click on Index 0 of
-	// the list
-	firstProd.get(1).click();
-	 //Thread.sleep(3000);
-	 logger.info("Clicked on First product link");
-	
-	scn.log("Clicked on First product link");
-	
-	Set<String> handles = driver.getWindowHandles(); // get all the open windows
-	Iterator<String> it = handles.iterator(); // get the iterator to iterate the elements in set
-	String original = it.next();// gives the parent window id
-	String prodDescp = it.next();// gives the child window id
-	String prodDescp1 = it.next();
-	driver.switchTo().window(prodDescp1  ); // switch to product Descp
-
-   // logger.info("driver is switched back to prodDescp window");
-	//Thread.sleep(3000);
+cartobject.ChoosetheSecondProduct();
 	
 }
 
@@ -1892,25 +1778,16 @@ public void add_this_item_to_the_cart() throws Exception {
 	js= (JavascriptExecutor)driver;
 	js.executeScript("window.scrollBy(0,600)", "");
 	
-	WebElement addtocart1= driver.findElement(By.xpath("//button[@id='product-addtocart-button']"));
-	addtocart1.click();
-	
-	Thread.sleep(5000);
 
-	
+	productDescObject.ClickOnAddToCart();
 }
 
 
 
 @When("User Click on proceed to check out")
 public void user_click_on_proceed_to_check_out() throws InterruptedException {
-	Thread.sleep(3000);
-	WebElement checkout1 = driver.findElement(By.xpath("//button[@title='Checkout Securely']"));
-	
-	JavascriptExecutor checkout=(JavascriptExecutor) driver;
-	checkout.executeScript("arguments[0].click();",checkout1  );
-	logger.info("Clicked on proceed to checkout button");
-		Thread.sleep(5000);
+
+	productDescObject.ClickOnCheckoutSecurely();
 }
 
 
@@ -2233,7 +2110,7 @@ public void user_see_the_cander_razorpay_page() throws Exception {
 	Placeorder.click();
 
 	//paymentobject.clickOnPlaceorder();
-	Thread.sleep(20000);
+	Thread.sleep(50000);
 	homePageObject.capturePassScreenshot(scn);
 	
 	
@@ -2242,11 +2119,13 @@ public void user_see_the_cander_razorpay_page() throws Exception {
 
 
 @When("User mouseover to my account and click on my order")
-public void user_mouseover_to_my_account_and_click_on_my_order() {
+public void user_mouseover_to_my_account_and_click_on_my_order() throws InterruptedException {
+	
+	Thread.sleep(3000);
 	WebElement bg =driver.findElement(By.xpath("//div[@class='actions-custom']//img[@alt='user']"));
 	Actions act=new Actions(driver);
 	act.moveToElement(bg).build().perform();
-	
+	Thread.sleep(3000);
 	WebElement myorder =driver.findElement(By.xpath("//span[normalize-space()='My Orders']"));
 	myorder.click();
 	
@@ -2341,33 +2220,33 @@ public void user_see_the_payment_page_and_click_on_dgrp() throws Exception {
 public void select_the_no_of_installments_in_months() throws Exception {
 	Thread.sleep(3000);
 paymentobject.SelectNoOfInstallment();
-Thread.sleep(5000);
+Thread.sleep(3000);
 
 paymentobject.Scrolldown();
 Thread.sleep(2000);
 paymentobject.clickOnPlaceorder();
-Thread.sleep(5000);
+Thread.sleep(3000);
 
 }
 @When("Clikc on accept DGRP Terms and Conditions and click on pay now")
 public void clikc_on_accept_dgrp_terms_and_conditions_and_click_on_pay_now() throws Exception {
-	Thread.sleep(3000);
+	Thread.sleep(2000);
 	WebElement terms = driver.findElement(By.xpath("//*[@id='emi_terms-condition']/div[2]/div[1]/label/div/span"));
 	terms.click();
-	Thread.sleep(3000);
+	Thread.sleep(2000);
 	WebElement paynow = driver.findElement(By.xpath("//div[@id='emi_terms-condition']//button[1]"));
 	paynow.click();
 	
 }
 @When("User select the payment method as UPI")
 public void user_select_the_payment_method_as_upi() throws Exception {
-	Thread.sleep(2000);
+	Thread.sleep(1000);
 	 WebElement upi=driver.findElement(By.xpath("//div[@id='1000114']"));
 	 upi.click();
-	 Thread.sleep(2000);
+	 Thread.sleep(1000);
 	 WebElement upiid=driver.findElement(By.xpath("//input[@placeholder='Username@bankname']"));
 	 upiid.sendKeys("anything@payu");
-	 Thread.sleep(2000);
+	 Thread.sleep(1000);
 	 
 }
 @When("User click on pay now")
@@ -2477,7 +2356,7 @@ public void user_select_the_any_ring_as_per_choice() throws Exception {
 	JavascriptExecutor js = (JavascriptExecutor) driver;
 	 js.executeScript("window.scrollBy(0,350)", "");
 
-	firstProd.get(1).click();
+	firstProd.get(2).click();
 	
 	Set<String> handles = driver.getWindowHandles(); // get all the open windows
 	Iterator<String> it = handles.iterator(); // get the iterator to iterate the elements in set
@@ -2491,13 +2370,31 @@ public void user_select_the_any_ring_as_per_choice() throws Exception {
 
 //================================@MyAccount===================================================
 
+
+
+
+@When("User mouseover to user icon")
+public void user_mouseover_to_user_icon() throws Exception {
+	Thread.sleep(2000);
+	WebElement icon1 =driver.findElement(By.xpath("//div[@class='actions-custom']//img[@alt='user']"));
+	Actions act=new Actions(driver);
+	act.moveToElement(icon1).build().perform();
+	
+	Thread.sleep(2000);
+}
+
+
+
+
+
 @When("User click on my order")
 public void user_click_on_my_order() throws Exception {
 
-	 Thread.sleep(3000);
-signUpPageObject.clickOnSignInBtn();
 
-myaccountObject.clickMyOrder();
+
+	WebElement myorder =driver.findElement(By.xpath("//span[normalize-space()='My Orders']"));
+	myorder.click();
+	 
 Thread.sleep(2000);
 
 }
@@ -2506,36 +2403,29 @@ Thread.sleep(2000);
 @When("User see their account details and User validate all myaccountlink are clickable or not")
 public void user_see_their_account_details_and_user_validate_all_myaccountlink_are_clickable_or_not() throws Exception {
 
-
-	Thread.sleep(2000);
+Thread.sleep(2000);
 	
 myaccountObject.ClickOnMyWishlist();
 	
 Thread.sleep(2000);
-
-myaccountObject.ClickOnMyWallet();
-Thread.sleep(2000);
 myaccountObject.ClickOnAddressBook();
-
-Thread.sleep(1000);
+Thread.sleep(2000);
 
 myaccountObject.ClickOnEkyc();
-
-Thread.sleep(1000);
-myaccountObject.ClickOnAddressBook();
-Thread.sleep(1000);
-
+Thread.sleep(2000);
+myaccountObject.ClickOnAccountInformation();
+Thread.sleep(2000);
 myaccountObject.ClickOnSavedCards();
 Thread.sleep(2000);
-
 myaccountObject.ClickOnChangePassword();
 Thread.sleep(2000);
-
+myaccountObject.ClickOnReferAndEarn();
+Thread.sleep(2000);
+myaccountObject.ClickOnMyWallet();
+Thread.sleep(2000);
+myaccountObject.ClickOnDigiGold();
+Thread.sleep(2000);
 myaccountObject.ClickOnEarnRewards();
-Thread.sleep(1000);
-
-
-
 
 }
 @Then("Below my account Links are displayed")
@@ -2703,8 +2593,120 @@ public void user_see_the_address_page() {
 
 //============================== @MyAccountEarnReward========================================================
 
+@When("User click on Refer And Earn")
+public void user_click_on_refer_and_earn() {
+   myaccountObject.ClickOnReferAndEarn();
+}
 
 
+@When("User click on copy link and click on ok")
+public void user_click_on_copy_link_and_click_on_ok() {
+	WebElement copyurl=driver.findElement(By.xpath("//*[@id='maincontent']/div[2]/div[1]/div[7]/section[2]/div/ul/li[1]/div/div/button"));
+	copyurl .click();
+	
+	driver.switchTo().alert().accept();
+
+}
+@When("User click on logout")
+public void user_click_on_logout() throws Exception {
+	JavascriptExecutor js = (JavascriptExecutor) driver;
+	 js.executeScript("window.scrollBy(0,350)", "");
+	 
+	 myaccountObject.clickLogout();
+	 Thread.sleep(3000);
+
+
+}
+@When("User open new the referal link")
+public void user_open_new_the_referal_link() {
+	  String nwtb = Keys.chord(Keys.CONTROL,Keys.ENTER);
+	  
+	  String originalHandle = driver.getWindowHandle();
+      for (String handle : driver.getWindowHandles()) {
+          if (!handle.equals(originalHandle)) {
+              driver.switchTo().window(handle);
+          
+          break;
+          }}
+	  driver .get("https://www.candere.com/referee?c=sel0BxIM");
+	  
+}
+@When("User sign up from that referal link")
+public void user_sign_up_from_that_referal_link() throws Exception {
+
+	WebElement signup=driver.findElement(By.xpath("//a[@id='referee_signup']"));
+	signup .click();
+	
+
+}
+@Then("User successfully redirect to my account")
+public void user_successfully_redirect_to_my_account() throws Exception {
+	
+	Thread.sleep(10000);
+	
+	JavascriptExecutor js = (JavascriptExecutor) driver;
+	 js.executeScript("window.scrollBy(0,350)", "");
+
+	signUpPageObject.validationtakescreenshot(scn);
+	
+
+}
+
+
+//=============================editprofile===================================================================
+
+
+
+@When("User click on edit profile")
+public void user_click_on_edit_profile() {
+
+myaccountObject.ClickOnEditProfile();
+}
+
+@When("User are able to redirect to account information page and enter the lastname and mobile no and select gender")
+public void user_are_able_to_redirect_to_account_information_page_and_enter_the_lastname_and_mobile_no() {
+	WebElement LN=driver.findElement(By.xpath("//input[@id='lastname']"));
+	LN.clear();
+	
+	LN .sendKeys("Wadhe");
+	WebElement MN=driver.findElement(By.xpath("//input[@id='mob_number']"));
+	MN.clear();
+	MN .sendKeys("9232098421");
+	
+	WebElement gender = driver.findElement(By.xpath("//select[@id='gender']"));
+	Select option = new Select(gender);
+	option.selectByVisibleText("Kids");
+
+}
+@When("Select the birth date and anniversary date and Click on save profile then")
+public void select_the_birth_date_and_anniversary_date_and_click_on_save_profile_then() {
+
+	
+	
+	WebElement birthmonth = driver.findElement(By.xpath("//select[@aria-label='Select month']"));
+	Select monthCombo = new Select(birthmonth);
+	monthCombo.selectByVisibleText("May");
+
+	WebElement year = driver.findElement(By.xpath("//select[@aria-label='Select year']"));
+	Select yearCombo = new Select(year);
+	yearCombo.selectByVisibleText("2000");
+
+
+
+	
+	
+
+}
+@Then("User are able to save there details.")
+public void user_are_able_to_save_there_details() throws Exception {
+
+	WebElement saveprofile=driver.findElement(By.xpath("//*[@id='form-validate']/div/div[1]/button"));
+	saveprofile.click();
+	Thread.sleep(3000);
+	
+	myaccountObject.clickLogout();
+
+}
 
 
 }

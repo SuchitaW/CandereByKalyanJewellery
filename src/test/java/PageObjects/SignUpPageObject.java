@@ -49,14 +49,14 @@
 	
 	
 		    
-		    public void clickOnSignInBtn()
+		    public void clickOnUserIcon()
 		    {
 		    	
-		    	WebElement signIn =driver.findElement(yourAccount);
+		    	WebElement UserAccount =driver.findElement(yourAccount);
 		    	
 		    	wait= new WebDriverWait(driver,50);
-		    	wait.until(ExpectedConditions.elementToBeClickable(signIn));
-		    	signIn.click();
+		    	wait.until(ExpectedConditions.elementToBeClickable(UserAccount));
+		    	UserAccount.click();
 		    	logger.info("Click on the User Icon");
 		    	scn.log("Click on the User Icon");
 		    	

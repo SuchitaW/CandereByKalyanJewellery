@@ -114,8 +114,10 @@ public class ShippingPageObject {
 
 		public void AddNewShippingAddressDetails(String lastname, String mobile, String zip, String flat) throws Exception
 	    {
-		
-			Thread.sleep(3000);
+
+			JavascriptExecutor js = (JavascriptExecutor) driver;
+			 js.executeScript("window.scrollBy(0,50)", "");
+
 			WebElement Lastname =driver.findElement(By.xpath("(//input[@name='lastname'])[1]"));
 			Lastname.sendKeys(lastname);
 			
@@ -125,7 +127,7 @@ public class ShippingPageObject {
 			WebElement ZipPostalCode =driver.findElement(By.xpath("(//input[@name='postcode'])[1]"));
 			ZipPostalCode .sendKeys(zip);
 			
-			Thread.sleep(4000);
+			Thread.sleep(3000);
 			//driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
 			WebElement Flat =driver.findElement(By.xpath("(//input[@name='street[0]'])[1]"));
 			Flat .sendKeys(flat );

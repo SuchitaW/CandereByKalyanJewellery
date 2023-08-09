@@ -20,7 +20,7 @@ Feature: E-Commerce website healthcheck
     When User click on Your Account button
     Then User is on Your Account page which have expected page title as "Online Jewellery Shopping India | Candere By Kalyan Jewellers | Most Trusted Online Jewellery Store"
 
-  @CreateAccount
+  @SignUp
   Scenario Outline: User is able to Create Account into the application
     When User see Your Account and click on  SignUp  from home page
     And User enters  "<name>"  and  "<emailid>" and "<mobileno>"

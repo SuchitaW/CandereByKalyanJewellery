@@ -34,8 +34,8 @@ Feature: E-Commerce website healthcheck
     Then Go back to my orders
 
     Examples: 
-      | product | name   | emailid              | mobileno   | lastname | mobile     | zip    | flat                                   | UPIId         |
-      | ring    | sdsadk | wewrew23@candere.com | 7672389012 | rane     | 9023458934 | 400068 | flat no 201,sanlkalp chsl dahisar east | anything@payu |
+      | product | name    | emailid               | mobileno   | lastname | mobile     | zip    | flat                                   | UPIId         |
+      | ring    | sdfgadk | wewrew123@candere.com | 7672389012 | rane     | 9023458934 | 400068 | flat no 201,sanlkalp chsl dahisar east | anything@payu |
 
   @OrderPlaceCredit/Debit
   Scenario Outline: To verify Credit / Debit order place functionality
@@ -58,8 +58,8 @@ Feature: E-Commerce website healthcheck
     Then Go back to my orders
 
     Examples: 
-      | name   | emailid              | mobileno   | lastname | mobile     | zip    | flat                                   | CardNumber          | NameOnCard | CVV | ExpiryYear | ExpiryMonth |
-      | riopsd | tyy123FW@candere.com | 9790234876 | rane     | 9023458934 | 400068 | flat no 201,sanlkalp chsl dahisar east | 4111 1111 1111 1111 | testing    | 123 |         23 |          10 |
+      | name  | emailid             | mobileno   | lastname | mobile     | zip    | flat                                   | CardNumber          | NameOnCard | CVV | ExpiryYear | ExpiryMonth |
+      | rwewd | t1213FW@candere.com | 9758912367 | rane     | 9023458934 | 400068 | flat no 201,sanlkalp chsl dahisar east | 4111 1111 1111 1111 | testing    | 123 |         23 |          10 |
 
   @OrderPlaceNetBanking
   Scenario Outline: To verify Netbanking order place functionality
@@ -134,8 +134,8 @@ Feature: E-Commerce website healthcheck
     Then Go back to my orders
 
     Examples: 
-      | product | name   | emailid             | mobileno   | lastname | mobile     | zip    | flat                                   | lastname1 | mobile1    | zip1   | flat1                                   | UPIId         |
-      | Ring    | ZYTYTC | SFDGLVX@candere.com | 8456241345 | rane     | 9023458934 | 400068 | flat no 201,sanlkalp chsl dahisar east | More      | 9834909874 | 400089 | flat no 201,sanlkalp chsl borivali east | anything@payu |
+      | product | name   | emailid               | mobileno   | lastname | mobile     | zip    | flat                                   | lastname1 | mobile1    | zip1   | flat1                                   | UPIId         |
+      | Ring    | bvbcwC | zoyute23X@candere.com | 8784234025 | rane     | 9023458934 | 400068 | flat no 201,sanlkalp chsl dahisar east | More      | 9834909874 | 400089 | flat no 201,sanlkalp chsl borivali east | anything@payu |
 
   @OrderPlaceDGRP1
   Scenario Outline: Validate if User should be login and then check out the product
@@ -195,7 +195,7 @@ Feature: E-Commerce website healthcheck
       | Emailidmobileno           | UPIId         |
       | suchita.tayde@candere.com | anything@payu |
 
-     @ChangeAddress
+  @ChangeAddress
   Scenario Outline: To verify Change Address functionality
     When User see Your Account and click on  Log In  from home page
     And User enters "<Emailidmobileno>"
@@ -208,7 +208,7 @@ Feature: E-Commerce website healthcheck
     And User click on Checkout Securely
     And User click on continue button on shipping page
     And User scroll down and click on change address
-     And Click on Ship to this address checkbox
+    And Click on Ship to this address checkbox
     And User click on continue on shipping page
     And User click on payment method UPI
     And User enter "<UPIId>" and click on placeorder
@@ -218,10 +218,5 @@ Feature: E-Commerce website healthcheck
     Then Go back to my orders
 
     Examples: 
-      Examples:
-
       | Emailidmobileno           | UPIId         |
       | suchita.tayde@candere.com | anything@payu |
-      
-      
-      

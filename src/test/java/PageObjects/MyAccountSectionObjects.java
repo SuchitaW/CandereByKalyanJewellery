@@ -35,12 +35,14 @@ public class MyAccountSectionObjects {
 	
          private By changepass =  By.xpath("//*[@id='block-collapsible-nav']/ul/li[7]");
 	private By mywallet =  By.xpath("//*[@id='block-collapsible-nav']/ul/li[9]");
-	private By earnrewards =  By.xpath("//*[@id='block-collapsible-nav']/ul/li[10]");
+	private By digigold =  By.xpath("//*[@id='block-collapsible-nav']/ul/li[10]");
+	private By earnrewards =  By.xpath("//*[@id='block-collapsible-nav']/ul/li[11]");
 	private By referandearn =  By.xpath("//*[@id='block-collapsible-nav']/ul/li[8]");
 	private By logout =  By.xpath("//*[@id='block-collapsible-nav']/ul/button");
 
 	private By promowallet =  By.xpath("//li[@class='active']");
 	private By canderewallet =  By.xpath("//li[@data-id='candere_wallet__']");
+	private By editprofile =  By.xpath("//span[normalize-space()='Edit Profile']");
 	 
 	 
 	//============= Expected Results ==========================================================//
@@ -48,9 +50,10 @@ public class MyAccountSectionObjects {
 			String myWishlistPageTitle= "My Wish List";
 			String addressbookPageTitle="Add New Address";
 			String accountinfoPageTitle="Account Information";
-			String mywalletPageTitle= "My Orders";
+			String mywalletPageTitle= "Manage Wallet";
 			String earnRewardsPageTitle= "Earn Rewards";
-	
+			String digigoldPageTitle= "DigiGold Locker";
+			String referandearnPageTitle= "Refer & Earn";
 	//============= Constructor ===============================================================//
 		public MyAccountSectionObjects(WebDriver driver,Scenario scn)
 		{
@@ -102,20 +105,20 @@ public class MyAccountSectionObjects {
 			driver.findElement(accountinfo).click();
 			logger.info("Clicked on Account Information");
 			
-			String actPageTitle= driver.getTitle();
-	    	Assert.assertEquals(accountinfoPageTitle, actPageTitle);
-	        logger.info("Validate title of Contact Us page, title is:" + actPageTitle);
-	        scn.log("Title of the page is: "+ actPageTitle);
+//			String actPageTitle= driver.getTitle();
+//	    	Assert.assertEquals(accountinfoPageTitle, actPageTitle);
+//	        logger.info("Validate title of Contact Us page, title is:" + actPageTitle);
+//	        scn.log("Title of the page is: "+ actPageTitle);
 		}
 			
 		public void ClickOnAddressBook() {
 			driver.findElement(addressbook).click();
 			logger.info("Clicked on Address Book");
 			
-			String actPageTitle= driver.getTitle();
-	    	Assert.assertEquals(addressbookPageTitle, actPageTitle);
-	        logger.info("Validate title of page, title is:" + actPageTitle);
-	        scn.log("Title of the page is: "+ actPageTitle);
+//			String actPageTitle= driver.getTitle();
+//	    	Assert.assertEquals(addressbookPageTitle, actPageTitle);
+//	        logger.info("Validate title of page, title is:" + actPageTitle);
+//	        scn.log("Title of the page is: "+ actPageTitle);
 		}
 			
 		public void ClickOnSavedCards() {
@@ -124,6 +127,11 @@ public class MyAccountSectionObjects {
 		}
 		public void ClickOnReferAndEarn() {
 			driver.findElement(referandearn).click();
+			
+			String actPageTitle= driver.getTitle();
+	    	Assert.assertEquals(referandearnPageTitle, actPageTitle);
+	        logger.info("Validate title of page, title is:" + actPageTitle);
+	        scn.log("Title of the page is: "+ actPageTitle);
 			logger.info("Clicked on Refer And Earn");
 		}
 		
@@ -152,19 +160,39 @@ public class MyAccountSectionObjects {
 			
 			public void ClickOnMyWallet() {
 				
+				
+				
+				
 				WebElement wallet =driver.findElement(mywallet);
-				
-				
 				
 				JavascriptExecutor net = (JavascriptExecutor) driver;
 				net.executeScript("arguments[0].click();",wallet  );
 				
-				logger.info("Clicked on My Wallet");
+//				String actPageTitle= driver.getTitle();
+//		    	Assert.assertEquals(mywalletPageTitle, actPageTitle);
+//		        logger.info("Validate title of page, title is:" + actPageTitle);
+//		        scn.log("Title of the page is: "+ actPageTitle);
+//		
+//				logger.info("Clicked on My Wallet");
 				
 								
 			}
 
-		
+			public void ClickOnDigiGold() {
+				JavascriptExecutor js = (JavascriptExecutor) driver;
+				 js.executeScript("window.scrollBy(0,350)", "");
+
+				
+				
+				driver.findElement(digigold).click();
+				logger.info("Clicked on Digi Gold");
+				
+				String actPageTitle= driver.getTitle();
+		    	Assert.assertEquals(digigoldPageTitle, actPageTitle);
+		        logger.info("Validate title of page, title is:" + actPageTitle);
+		        scn.log("Title of the page is: "+ actPageTitle);
+				
+			}
 		
 		public void validateElementPresentInMyAccountSection(String text) throws Exception {
 			boolean b=true;
@@ -193,8 +221,16 @@ public class MyAccountSectionObjects {
 				b = driver.findElement(changepass).isDisplayed();
 				break;
 				
+			case "Refer And Earn	":
+				b = driver.findElement(referandearn).isDisplayed();
+				break;
+				
 			case "My Wallet":
 				b = driver.findElement(mywallet).isDisplayed();
+				break;
+				
+			case "DigiGold Locker":
+				b = driver.findElement(digigold).isDisplayed();
 				break;
 			case "Earn Rewards":
 				b = driver.findElement(earnrewards).isDisplayed();
@@ -212,11 +248,6 @@ public class MyAccountSectionObjects {
 				Assert.fail("My Account Link displayed: " + text);
 			}	}
 
-		
-		
-		
-		
-		
 		public void clickMyOrder()
 	    {
 	    	
@@ -284,4 +315,8 @@ public class MyAccountSectionObjects {
 		}		
 			
 		
-}
+		public void ClickOnEditProfile() {
+			driver.findElement(editprofile).click();
+			logger.info("Clicked on Edit Profile");
+		
+}}

@@ -174,11 +174,10 @@ public class HomePageObjects {
 	    } 
     
 	   
-	   
-		    public void clickOnSignUpSpin() throws Exception{
+	 public void clickOnSignUpSpin() throws Exception{
 			    {
 			    	
-		            WebElement SignUpSpin =driver.findElement(By.xpath("//a[normalize-space()='Sign up & Spin!']"));
+		         WebElement SignUpSpin =driver.findElement(By.xpath("//a[normalize-space()='Sign up & Spin!']"));
 		            
 		            JavascriptExecutor spin = (JavascriptExecutor) driver;
 		            spin .executeScript("arguments[0].click();", SignUpSpin );
@@ -284,13 +283,7 @@ public class HomePageObjects {
 		    	
 		    	showMeMore.click();
 		    	
-		    	//WebElement l=driver.findElement(By.xpath("//*[text()='ABOUT US']"));
-		        // Javascript executor
-//		        ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView(true);", showMeMore);
-//		    	
-//		    	JavascriptExecutor sh=(JavascriptExecutor)driver;
-//		    	sh.executeScript("argument[0],click",showMeMore);
-		    	//WebDriverWait wait = new WebDriverWait(driver, 50);
+		    	
 		    	logger.info("More Collection page is display");
 		    	scn.log("User clicked on Show Me More");
 		    }	
@@ -341,9 +334,73 @@ public class HomePageObjects {
 		    	logger.info("Sent the keys to search box as -> " + prodName);
 	    	driver.findElement(searchButtonElement).click();
 		    	logger.info("Clicked on search button");
-						
-				
+	
 			}
+
+public void validateRegisterOTP() throws Exception {
+				
+	WebElement otp1 = driver.findElement(By.xpath("//div[@id='register_verifyotp']//input[@name='otp1']"));
+	otp1.sendKeys("1");
+	//Thread.sleep(500);
+	WebElement otp2 = driver.findElement(By.xpath("//div[@id='register_verifyotp']//input[@name='otp2']"));
+	otp2.sendKeys("2");
+	//Thread.sleep(500);
+	WebElement otp3 = driver.findElement(By.xpath("//div[@id='register_verifyotp']//input[@name='otp3']"));
+	otp3.sendKeys("3");
+	//Thread.sleep(500);
+	WebElement otp4 = driver.findElement(By.xpath("//div[@id='register_verifyotp']//input[@name='otp4']"));
+	otp4.sendKeys("4");
+	//Thread.sleep(500);
+	WebElement otp5 = driver.findElement(By.xpath("//div[@id='register_verifyotp']//input[@name='otp5']"));
+	otp5.sendKeys("5");
+	//Thread.sleep(500);
+	WebElement otp6 = driver.findElement(By.xpath("//div[@id='register_verifyotp']//input[@name='otp6']"));
+	otp6.sendKeys("6");
+	//Thread.sleep(500);
+		    	logger.info("Enter otp ");
+	
+			}
+
+public void validateLoginOTP() throws Exception {
+	
+	
+
+	WebElement otp1 = driver.findElement(By.xpath("//*[@id='otp-login']/input[1]"));
+	otp1.sendKeys("1");
+	//Thread.sleep(500);
+	WebElement otp2 = driver.findElement(By.xpath("//*[@id='otp-login']/input[2]"));
+	otp2.sendKeys("2");
+	//Thread.sleep(1000);
+	WebElement otp3 = driver.findElement(By.xpath("//div[@class='login_steps_wrapper']//input[@name='otp3']"));
+	otp3.sendKeys("3");
+	//Thread.sleep(1000);
+	WebElement otp4 = driver.findElement(By.xpath("//div[@class='login_steps_wrapper']//input[@name='otp4']"));
+	otp4.sendKeys("4");
+	//Thread.sleep(1000);
+	WebElement otp5 = driver.findElement(By.xpath("//div[@class='login_steps_wrapper']//input[@name='otp5']"));
+	otp5.sendKeys("5");
+	//Thread.sleep(1000);
+	WebElement otp6 = driver.findElement(By.xpath("//div[@class='login_steps_wrapper']//input[@name='otp6']"));
+	otp6.sendKeys("6");
+	//Thread.sleep(1000);
+	
+
+}
+
+
+public void clickOnSLogin()
+{
+	
+	WebElement loginButtonElement = driver.findElement(By.xpath("//*[@id='customer-popup-login-form-three']/fieldset/div[3]/button"));
+	loginButtonElement.click();
+	
+	logger.info("User clicked on Login");
+	scn.log("User clicked on Login");
+}	
+
+
+
+
 
 
 

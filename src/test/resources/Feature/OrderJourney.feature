@@ -175,7 +175,7 @@ Feature: E-Commerce website healthcheck
     And User enters "<Emailidmobileno>"
     And User click on continue button
     And User enter otp manually and click on login
-    And User click on product type Necklace
+    And User click on product type Chain
     And User choose to buy the first item
     And Product Desc is displayed in new tab
     And User click on add to cart
@@ -222,7 +222,7 @@ Feature: E-Commerce website healthcheck
     And User enters "<Emailidmobileno>"
     And User click on continue button
     And User enter otp manually and click on login
-    And User click on product type Necklace
+    And User click on product type Chain
     And User choose to buy the first item
     And Product Desc is displayed in new tab
     And User click on add to cart
@@ -251,7 +251,7 @@ Feature: E-Commerce website healthcheck
     And User enters "<Emailidmobileno>"
     And User click on continue button
     And User enter otp manually and click on login
-    And User click on product type Necklace
+    And User click on product type Chain
     And User choose to buy the first item
     And Product Desc is displayed in new tab
     And User click on add to cart

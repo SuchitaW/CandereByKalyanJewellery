@@ -1,15 +1,15 @@
 $(document).ready(function() {
 CucumberHTML.timelineItems.pushArray([
   {
-    "id": "79e2e9cd-a636-4e2f-9b77-b2d7d060ef22",
+    "id": "824aa872-bbe4-493c-a8a6-9d62afd24164",
     "feature": "E-Commerce website healthcheck",
-    "scenario": "To verify Change Address functionality",
-    "start": 1690804764090,
+    "scenario": "To verify UPI order place functionality",
+    "start": 1691560159088,
     "group": 1,
     "content": "",
-    "tags": "@healthcheck,@changeaddress,",
-    "end": 1690804870373,
-    "className": "passed"
+    "tags": "@healthcheck,@orderplaceupi,",
+    "end": 1691560319924,
+    "className": "failed"
   }
 ]);
 CucumberHTML.timelineGroups.pushArray([

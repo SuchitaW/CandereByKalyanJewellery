@@ -148,6 +148,124 @@ public class ProdductDescPageObjects {
 			
 		    }
 		    
+		    public void ClickOnTryON() throws Exception
+		    {
+		    
+		    	JavascriptExecutor js6= (JavascriptExecutor)driver;
+		    	js6.executeScript("window.scrollBy(0,450)", "");
+		    	
+		    	WebElement tryOn=driver.findElement(By.xpath("//button[@id='product-MirrAR-Button']"));
+		    	tryOn.click();
+		    	
+		    	Thread.sleep(20000);
+		    	scn.log("Click on Try On");
+		    	logger.info("Click on Try On");
+			
+		    }
+		    
+		    public void ClickOnCustomizeproduct () throws Exception
+		    {
+		    
+		    	JavascriptExecutor js8= (JavascriptExecutor)driver;
+		    	js8.executeScript("window.scrollBy(0,600)", "");
+		    	
+		    	WebElement customize = driver.findElement(By.xpath("//div[@class='customisation_toggle']"));
+		    	customize .click();
+		    	
+
+		    	Thread.sleep(5000);
+		    	scn.log("Click on Customize product");
+		    	logger.info("Click on Customize product");
+			
+		    }
+		    
+
+		    public void ChangeMetalcolourpurityqty () throws Exception
+		    {
+		    
+	    	WebElement metalcolor = driver.findElement(By.xpath("//div[@class='metal-option']//label[2]"));
+	    	metalcolor .click();
+	    	Thread.sleep(2000);
+	    	WebElement metalpurity = driver.findElement(By.xpath("//label[@class='container purity_container active']"));
+    	    metalpurity .click();
+    	   Thread.sleep(2000);
+	    	WebElement quality= driver.findElement(By.xpath("//label[@class='container clarity_container ']"));
+	    	quality .click();
+	    	Thread.sleep(2000);
+	    	
+	        scn.log("Change the Metal Colour, Purity and Quantity");
+		    	logger.info("Change the Metal Colour, Purity and Quantity");
+			
+		    }
+
+
+		    public void ClickOnMetaldetails() throws Exception
+		    {
+		   
+		    	WebElement Metaldetails=driver.findElement(By.xpath("//div[@aria-controls='tab-metal']"));
+		    	Metaldetails.click();
+		    	
+		    	scn.log("Click on METAL DETAILS");
+		    	logger.info("Click on METAL DETAILS");
+			
+		    }
+		    
+		    public void ClickOnDiamonddetails() throws Exception
+		    {
+		   
+		    	WebElement diamonddetails=driver.findElement(By.xpath("//div[@aria-controls='tab-diamond']"));
+		    	diamonddetails.click();
+		    	
+		    	scn.log("Click on DIAMOND DETAILS");
+		    	logger.info("Click on DIAMOND DETAILS");
+			
+		    }
+
+		    public void ClickOnGemstonedetails() throws Exception
+		    {
+		   
+		    	WebElement Gemstonedetails=driver.findElement(By.xpath("//div[@aria-controls='tab-gem-stone']"));
+		    	Gemstonedetails.click();
+		    	
+		    	scn.log("Click on Gemstonedetails");
+		    	logger.info("Click on Gemstonedetails");
+			
+		    }
+
+			public void ClickOnPriceBreakup() throws Exception {
+				// TODO Auto-generated method stub
+				WebElement pricebreakup =driver.findElement(By.xpath("//a[@class='view_details_ pb__ price-breakup']"));
+				pricebreakup.click();
+				Thread.sleep(3000);
+			}
+
+			public void ClickOnViewDetails() throws Exception {
+				WebElement viewdetails =driver.findElement(By.xpath("//a[normalize-space()='View Details']"));
+				viewdetails.click();
+				Thread.sleep(3000);
+				
+			}
+
+
+			public void ClickOnAddEngraveing() throws Exception
+		    {
+		   
+		    	WebElement addEngraveing=driver.findElement(By.xpath("//a[@class='view_details__ eng_popup engrave-tab']"));
+		    	addEngraveing.click();
+		   
+		    	
+		    	scn.log("Click on Add Engraveing");
+		    	logger.info("Click on Add Engraveing");
+			
+		    }
+
+			
+
+
+
+
+
+
 
 }
 	

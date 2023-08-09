@@ -148,7 +148,7 @@ Feature: E-Commerce website healthcheck
 
     Examples: 
       | emailid            | mobileno   |
-      | qwewqfd1@yahoo.com | 9056523346 |
+      | ewrWEWQE@yahoo.com | 9023237846 |
 
   @FooterLinksLists
   Scenario: Validate all footer links on landing page of the application
@@ -196,9 +196,9 @@ Feature: E-Commerce website healthcheck
   Scenario: Validate twitter social media handle
     When User click on twitter link
     And navigate to twitter account page
-    Then User opened with twitter url "https://twitter.com/i/flow/login"
-    
-    
+    Then User opened with twitter url "https://twitter.com/i/flow/login" 
+     
+ 
      @FacebookHandle
   Scenario: Validate facebook social media handle
     When User click on facebook link

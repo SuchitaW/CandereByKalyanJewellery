@@ -14,6 +14,22 @@ Feature: E-Commerce website healthcheck
     When User is on landing page
     Then Validate title of landing page with expected title as "Online Jewellery Shopping India | Candere By Kalyan Jewellers | Most Trusted Online Jewellery Store"
 
+  @Priceupdationonsize&qty
+  Scenario: To verify the Price updation on size and quantity updates
+    When User mousehover on Ring option
+    And User see the various ringsubcatagory on screen
+      | Shop by Style    |
+      | Shop by Material |
+      | Shop for         |
+      | Shop By Occasion |
+    And User select Shop by Material Diamond and click on it
+    And Product listing page is displayed
+    And User click on any of the product
+    And Product Description is displayed in new tab
+    And User click on add to cart and see the cart page
+    And On cart page user is able to change the product qty and and size
+    Then User are able to see the price updated when the size and quantity changes
+
   #Validation criteria : User should be logged in to check out the product
   @cartPagecheckout
   Scenario Outline: User able to see prodct type Earrings on landing page
@@ -41,8 +57,8 @@ Feature: E-Commerce website healthcheck
   #Product search and purchase from candere.com
   #User wants to search for Product and purchase from candere.com
   #Validation criteria : User should be logged in to check out the product
-  @cartPagecheckout2
-  Scenario Outline: Product Search and add to shopping cart
+  @CheckoutSecurely
+  Scenario Outline: To verify Checkout Securely button functionality and its redirection
     When User search for "<product>"
     And choose to buy the first item
     And Add product to shopping cart
@@ -55,8 +71,8 @@ Feature: E-Commerce website healthcheck
       | product |
       | Earring |
 
-  @cartPageRemove
-  Scenario Outline: Validate the remove functionality on cart
+  @Remove/Delete
+  Scenario Outline: Validate the Remove / delete functionality  on cart
     When User search for "<product>"
     And choose to buy the first item
     And Add product to shopping cart
@@ -69,8 +85,8 @@ Feature: E-Commerce website healthcheck
       | product             |
       | Bangles & Bracelets |
 
-  @cartPageInsurance
-  Scenario Outline: Validate the insurance and remove insurance or not functionality on cart
+  @Insurance
+  Scenario Outline: To Validate the insurance and remove insurance or not functionality on cart
     When User search for "<product>"
     And choose to buy the first item
     And Add product to shopping cart
@@ -81,8 +97,8 @@ Feature: E-Commerce website healthcheck
       | product     |
       | Mangalsutra |
 
-  @cartPagecheckoffers
-  Scenario Outline: Validate the check offers functionality on cart
+  @Checkoffers
+  Scenario Outline: Validate the Check Offers functionality on cart page
     When User search for "<product>"
     And choose to buy the first item
     And Add product to shopping cart
@@ -93,7 +109,7 @@ Feature: E-Commerce website healthcheck
       | product |
       | Chains  |
 
-  @cartPageManuallycheckoffers
+  @Manuallycheckoffers
   Scenario Outline: Validate the manually check offers functionality on cart
     When User search for "<product>"
     And choose to buy the first item
@@ -106,23 +122,20 @@ Feature: E-Commerce website healthcheck
 
     Examples: 
       | product | couponcode |
-      | Chains  | BLING   |
+      | Chains  | GETNOW     |
 
-      
-      @cartPagecheckoutmultipleitems
+  @MultipleitemsSelect
   Scenario Outline: Product Search and add to shopping cart
     When User search for "<product>"
     And choose to buy the first item
     And Add product to shopping cart
     And User clicks on continue shopping
-   And User search for "<product1>"
+    And User search for "<product1>"
     And choose to buy the second item
-   And Add this item to the cart
+    And Add this item to the cart
     And User Click on proceed to check out
     Then User see product in cart
 
     Examples: 
-      
-      
-      | product |product1|
-      | Earring |Rings|
+      | product | product1 |
+      | Earring | Rings    |

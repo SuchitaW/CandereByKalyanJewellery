@@ -101,16 +101,12 @@ public class ProductListingPageObject {
 		public void clickOnexpressdelivery() {
 			// TODO Auto-generated method stub
 			WebElement expressdelivery =driver.findElement(By.xpath("//div[@class='select-filter-options ps_hide']"));
-	    	////*[@id="filterTags"]/div
-			
-			////*[@id='narrow-by-list']/div[2]/dt
 	    	JavascriptExecutor express = (JavascriptExecutor) driver;
 	    	express.executeScript("arguments[0].click();", expressdelivery );
 	    	scn.log("Express-Delivery button is displayed");
 	    	logger.info("Express-Delivery button is displayed");
 	    	
 	    	WebElement expressdelivery11 =driver.findElement(By.xpath("//*[@id='filterTags']"));
-//expressdelivery.click();
 	    	JavascriptExecutor express1 = (JavascriptExecutor) driver;
 	    	express1.executeScript("arguments[0].click();", expressdelivery11 );
 	    
@@ -179,7 +175,96 @@ public class ProductListingPageObject {
 		}
 
 		
+public void CountNoofProduct() {
+			
+	List<WebElement> elements = driver.findElements(By.xpath("//*[@id=\"amasty-shopby-product-list\"]/div[2]/ol/li"));
+    int elementsCount = elements.size();
+    System.out.println("Total Number of Product on Page  : " + elementsCount);
+    logger.info("Total Number of Product on Page:" + elementsCount);
+    scn.log("Total Number of Product on Page: "+ elementsCount); 
 		
+}
+
+public void ClickOnPendant() throws Exception {
+	 WebElement pendants = driver.findElement(By.xpath("//*[@id='store.links']/nav/div/div/div/div/ul/li[4]/a"));
+	    pendants.click();
+	    
+	    Thread.sleep(2000);
+	 JavascriptExecutor js=((JavascriptExecutor) driver);
+	    
+	 js.executeScript("window.scrollBy(0,500)","");
+	
+}
+
+public void FilterByMaterialType() {
+WebElement materialttype = driver.findElement(By.xpath("//*[@id='narrow-by-list']/div[5]"));
+	
+	Actions act= new Actions(driver);
+	act.moveToElement(materialttype ).build().perform();
+	
+List<WebElement> options = driver.findElements(By.xpath("//*[@id='narrow-by-list']/div[5]/dd/form/ol/li"));
+
+for(int i=0;i<options.size();i++)
+{
+
+	String ptype=options.get(i).getText();
+
+	if(ptype.contains("Diamond"));
+	{
 		
+       options.get(i).click();	
+		
+		break;
+	}
+	
+	}
+}
+
+public void FilterByShopFor() {
+
+	WebElement shopfor = driver.findElement(By.xpath("//*[@id='narrow-by-list']/div[6]"));
+
+	Actions s= new Actions(driver);
+	s.moveToElement(shopfor ).build().perform();
+
+	List<WebElement> options2 = driver.findElements(By.xpath("//*[@id='narrow-by-list']/div[6]/dd/form/ol/li"));
+
+	for(int i=0;i<options2.size();i++)
+	{
+
+	String wtype=options2.get(i).getText();
+
+	if(wtype.contains("Women"));
+	{
+		
+	   options2.get(i).click();	
+		
+		break;
+	}
+
+	}}
+	
+	public void ClickOnNecklace() throws Exception {
+		WebElement necklace = driver.findElement(By.xpath("///div[@class='header_top_menu']//li[5]"));
+	
+	necklace.click();
+	
+	
+	 
+    Thread.sleep(2000);
+ JavascriptExecutor js=((JavascriptExecutor) driver);
+    
+ js.executeScript("window.scrollBy(0,500)","");
+
+}
+
+
+
+
+
+
+
+
+
 }   
 	    
