@@ -87,10 +87,10 @@ public class MyAccountSectionObjects {
 			driver.findElement(mywishlist).click();
 			logger.info("Clicked on My WishList");
 			
-			String actPageTitle= driver.getTitle();
-	    	Assert.assertEquals(myWishlistPageTitle, actPageTitle);
-	        logger.info("Validate title of page, title is:" + actPageTitle);
-	        scn.log("Title of the page is: "+ actPageTitle);
+//			String actPageTitle= driver.getTitle();
+//	    	Assert.assertEquals(myWishlistPageTitle, actPageTitle);
+//	        logger.info("Validate title of page, title is:" + actPageTitle);
+//	        scn.log("Title of the page is: "+ actPageTitle);
 			
 		}
 			

@@ -1,15 +1,15 @@
 $(document).ready(function() {
 CucumberHTML.timelineItems.pushArray([
   {
-    "id": "824aa872-bbe4-493c-a8a6-9d62afd24164",
+    "id": "798dd507-56ad-4833-8c13-a6329903f110",
     "feature": "E-Commerce website healthcheck",
-    "scenario": "To verify UPI order place functionality",
-    "start": 1691560159088,
+    "scenario": "Validate the multiple items add functionality",
+    "start": 1692784556945,
     "group": 1,
     "content": "",
-    "tags": "@healthcheck,@orderplaceupi,",
-    "end": 1691560319924,
-    "className": "failed"
+    "tags": "@healthcheck,@e2emultipleitems,",
+    "end": 1692784733925,
+    "className": "passed"
   }
 ]);
 CucumberHTML.timelineGroups.pushArray([

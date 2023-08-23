@@ -1,13 +1,20 @@
-2023-Aug-09 11:19:21 am [main] INFO  core.WebDriverFactory - Chrome browser invoked
-2023-Aug-09 11:19:21 am [main] INFO  core.WebDriverFactory - browser window maximized and set timeout is 20 second
-2023-Aug-09 11:19:26 am [main] INFO  core.WebDriverFactory - navigate to url
-2023-Aug-09 11:19:27 am [main] INFO  PageObjects.HomePageObjects - Sent the keys to search box as -> ring
-2023-Aug-09 11:19:30 am [main] INFO  PageObjects.HomePageObjects - Clicked on search button
-2023-Aug-09 11:19:34 am [main] INFO  StepDefination.HomeStepDef - Product description page is display
-2023-Aug-09 11:19:35 am [main] INFO  StepDefination.HomeStepDef - Add to cart button is displayed
-2023-Aug-09 11:19:46 am [main] INFO  StepDefination.HomeStepDef - Checkout Securely button is displayed
-2023-Aug-09 11:19:47 am [main] INFO  StepDefination.HomeStepDef - Otp send successful
-2023-Aug-09 11:19:54 am [main] INFO  PageObjects.HomePageObjects - Enter otp 
-2023-Aug-09 11:20:17 am [main] INFO  PageObjects.PaymentPageObjects - Click on Continue button
-2023-Aug-09 11:20:25 am [main] INFO  PageObjects.PaymentPageObjects - Credit / Debit Card Payment Option is displayed
-2023-Aug-09 11:21:59 am [main] INFO  core.WebDriverFactory - Quit the browser
+2023-Aug-23 15:25:59 pm [main] INFO  core.WebDriverFactory - Chrome browser invoked
+2023-Aug-23 15:26:00 pm [main] INFO  core.WebDriverFactory - browser window maximized and set timeout is 20 second
+2023-Aug-23 15:26:07 pm [main] INFO  core.WebDriverFactory - navigate to url
+2023-Aug-23 15:26:09 pm [main] INFO  PageObjects.HomePageObjects - Sent the keys to search box as -> Earring
+2023-Aug-23 15:26:14 pm [main] INFO  PageObjects.HomePageObjects - Clicked on search button
+2023-Aug-23 15:26:21 pm [main] INFO  PageObjects.CartPageObjects - Clicked on First product link
+2023-Aug-23 15:26:22 pm [main] INFO  PageObjects.CartPageObjects - driver is switched back to prodDescp window
+2023-Aug-23 15:26:26 pm [main] INFO  PageObjects.ProdductDescPageObjects - Add to cart button is displayed
+2023-Aug-23 15:26:40 pm [main] INFO  PageObjects.CartPageObjects - Clicked on continue shopping button
+2023-Aug-23 15:26:40 pm [main] INFO  PageObjects.HomePageObjects - Sent the keys to search box as -> ring
+2023-Aug-23 15:26:43 pm [main] INFO  PageObjects.HomePageObjects - Clicked on search button
+2023-Aug-23 15:26:46 pm [main] INFO  PageObjects.CartPageObjects - Clicked on First product link
+2023-Aug-23 15:26:47 pm [main] INFO  PageObjects.CartPageObjects - driver is switched back to prodDescp window
+2023-Aug-23 15:26:49 pm [main] INFO  PageObjects.ProdductDescPageObjects - Add to cart button is displayed
+2023-Aug-23 15:26:59 pm [main] INFO  PageObjects.ProdductDescPageObjects - Checkout Securely button is displayed
+2023-Aug-23 15:26:59 pm [main] INFO  StepDefination.HomeStepDef - Otp send successful
+2023-Aug-23 15:27:17 pm [main] INFO  PageObjects.HomePageObjects - Enter otp 
+2023-Aug-23 15:27:38 pm [main] INFO  PageObjects.PaymentPageObjects - Click on Continue button
+2023-Aug-23 15:27:46 pm [main] INFO  PageObjects.PaymentPageObjects - Credit / Debit Card Payment Option is displayed
+2023-Aug-23 15:28:53 pm [main] INFO  core.WebDriverFactory - Quit the browser

@@ -30,10 +30,13 @@ Feature: E-Commerce website healthcheck
     Then User successfully redirected to "Online Jewellery Shopping India | Candere By Kalyan Jewellers | Most Trusted Online Jewellery Store"
 
     Examples: 
-      | name  | emailid              | mobileno   |
-      | pqrst | test1212@candere.com | 1234444444 |
+      | name    | emailid                 | mobileno   |
+      | mnbcxs  | selenium192@candere.com | 5884586441 |
+      | hjhjui  | selenium193@candere.com | 5804584412 |
+      | sfcvbg  | selenium194@candere.com | 9789078417 |
+      | zxzcbg  | selenium195@candere.com | 7846569456 |
+      | sytyvba | selenium196@candere.com | 6743256941 |
 
-  #| dsfee | wetry43e@gmail.com | 9978376456 |
   @login
   Scenario Outline: User is able to login into the application
     When User see Your Account and click on  Log In  from home page

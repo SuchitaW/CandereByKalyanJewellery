@@ -12,9 +12,14 @@ import io.cucumber.junit.CucumberOptions;
 	@RunWith(Cucumber.class)
 	@CucumberOptions(
 		
-			features={"src/test/resources/Feature/PaymentPage.feature"},           //Path of Feature folder which hold feature file
+			
+//			features="classpath:Feature",
+//					glue="",
+//					tags="",
+			
+			features={"src/test/resources/Feature/End2EndJounery.feature"},           //Path of Feature folder which hold feature file
 	        glue={"StepDefination","HomeStepDef" }, // Path of StepDefinition file
-	        tags= " @OrderPlaceUPI", 
+	        tags= " @e2eMultipleitems", 
 	        plugin = {"pretty",                      
 	            "html:target/html/htmlReport.html",
 	            "json:target/json/jsonReport.json",
